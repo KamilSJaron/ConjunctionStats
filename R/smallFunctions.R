@@ -125,7 +125,11 @@ getSstar <- function(meanf,c,depth) {
 getSlope=function(simtab,GradTableLine){
 	out <- tryCatch(
 		{
-			binit <- 4 * (sqrt(8)*(sqrt(0.5) / sqrt(GradTableLine$s)))^-1
+		  if(GradTableLine$s == 0){
+		    binit <- (2 +GradTableLine$total_demes) / (GradTableLine$total_demes^1.2)
+		  } else {
+		    binit <- 4 * (sqrt(8)*(sqrt(0.5) / sqrt(GradTableLine$s)))^-1
+		  }
 			y = simtab$meanHI
 			x = simtab$order
 			

@@ -1,4 +1,5 @@
-# forsim_output_parser
-The set of functions written in R created for parsing the output of the forsim.
+# ConjunctionStats
 
-the functions for loading, computing the center and width od zones are included.
+The set of functions written in R created for parsing the output of the simulator of secondary contact - conjunction.
+
+package RColorBrewer is needed
