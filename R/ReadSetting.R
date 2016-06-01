@@ -1,49 +1,51 @@
-ReadSetting=function(InputFile = './setting.txt'){
+ReadSetting <- function(InputFile = './setting.txt', forsim = F){
 	gradientTable <- data.frame(run = 1)
 	# 'C' = numeric(0),'L' = numeric(0),'r' = numeric(0),'s' = numeric(0),'b' = numeric(0)
 	summaryFile <- readLines(InputFile)
-
-	for(l in summaryFile){
-		l <- strsplit(l,split='#')[[1]][1]
-		l <- strsplit(l,split='=')[[1]]
-		if(grepl('RECOMBINATIONrate',l[1])){
+	generations <- as.numeric(strsplit(summaryFile[grepl('NUMBERofGENERATIONS',summaryFile)], "= | #")[[1]][2])
+	
+	for(l in rev(summaryFile)){
+		l <- unlist(strsplit(l,split='#'))[1]
+		l <- unlist(strsplit(l,split='='))
+		if(grepl('RECOMBINATIONrate',l[1]) | grepl('LAMBDA',l[1])){
 			if(grepl("\\[",l[2])){
-				gradientTable <- merge(gradientTable,data.frame('r' = as.double(strsplit(strsplit(strsplit(l[2],split=c('\\['))[[1]][2],split='\\]')[[1]][1],split=',')[[1]])))
+				gradientTable <- merge(gradientTable,data.frame('r' = GetVectorSplit(l)))
 			} else {
 				gradientTable <- merge(data.frame('r' = as.numeric(l[2])),gradientTable)
 			}
 		}
 		if(grepl('SELECTION',l[1])){
 			if(grepl("\\[",l[2])){
-				gradientTable <- merge(gradientTable,data.frame('s' = as.double(strsplit(strsplit(strsplit(l[2],split=c('\\['))[[1]][2],split='\\]')[[1]][1],split=',')[[1]])))
+				gradientTable <- merge(gradientTable,data.frame('s' = GetVectorSplit(l)))
 			} else {
 				gradientTable <- merge(data.frame('s' = as.numeric(l[2])),gradientTable)
 			}
 		}
 		if(grepl('CHROM',l[1])){
 			if(grepl("\\[",l[2])){
-				gradientTable <- merge(gradientTable,data.frame('C' = as.double(strsplit(strsplit(strsplit(l[2],split=c('\\['))[[1]][2],split='\\]')[[1]][1],split=',')[[1]])))
+				gradientTable <- merge(gradientTable,data.frame('C' = GetVectorSplit(l)))
 			} else {
 				gradientTable <- merge(data.frame('C' = as.numeric(l[2])),gradientTable)
 			}
 		}
 		if(grepl('LOCI',l[1])){
 			if(grepl("\\[",l[2])){
-				gradientTable <- merge(gradientTable,data.frame('L' = as.double(strsplit(strsplit(strsplit(l[2],split=c('\\['))[[1]][2],split='\\]')[[1]][1],split=',')[[1]])))
+				gradientTable <- merge(gradientTable,data.frame('L' = GetVectorSplit(l)))
 			} else {
 				gradientTable <- merge(data.frame('L' = as.numeric(l[2])),gradientTable)
 			}
 		}
 		if(grepl('BETA',l[1])){
 			if(grepl("\\[",l[2])){
-				gradientTable <- merge(gradientTable,data.frame('b' = as.double(strsplit(strsplit(strsplit(l[2],split=c('\\['))[[1]][2],split='\\]')[[1]][1],split=',')[[1]])))
+				gradientTable <- merge(gradientTable,data.frame('b' = GetVectorSplit(l)))
 			} else {
 				gradientTable <- merge(data.frame('b' = as.numeric(l[2])),gradientTable)
 			}
 		}
 		if(grepl('NUMBERofSAVES',l[1])){
-			if(as.numeric(l[2]) > 1){
-				gradientTable <- merge(data.frame('Saves' = as.numeric(l[2])),gradientTable)
+		  saves <- as.numeric(l[2])
+			if(saves > 1 & forsim == F){
+				gradientTable <- merge(data.frame('G' = (generations / saves) * 1:saves) ,gradientTable)
 			}
 		}
 		if(grepl('DEMEsize',l[1])){
@@ -59,11 +61,18 @@ ReadSetting=function(InputFile = './setting.txt'){
 	
 # normalization 1. delete useless demes.
 	
-	
-	
 	return(gradientTable)
 }
 
+GetVectorSplit <- function(l){
+  return(as.double(
+    unlist(strsplit(
+      strsplit(
+        strsplit(l[2],
+                 split=c('\\['))[[1]][2],
+        split='\\]')[[1]][1],
+      split="\\, |\\,|;"[[1]]))))
+}
 
 FillSetting <- function(sim,GradTable){
 	GradTable$slope <- 0
