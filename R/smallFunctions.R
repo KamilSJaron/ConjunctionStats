@@ -242,3 +242,35 @@ getBoth=function(simtab,s){
 	)    
 	return(out)
 }
+
+computeBlocksDistribution <- function(x,blocks){
+  y <- c()
+  number_of_blocks <- 0
+  for(k in (0:100)){
+    number_of_blocks <- sum(blocks < ((7/8)^k) & blocks > ((7/8)^(k+1)))
+    y <- c(y,log(number_of_blocks / (((7/8)^k)-((7/8)^(k+1)))))
+  }
+  return(y)
+}
+
+LogBlocksDistribution <- function(x,S,R,M){
+  theta = S / R
+  logy = log((M * theta * 2) / (S * (1 + theta)^2)) - (((3 + theta) * x) / (1 + theta))
+  return(logy)
+}
+
+slopeToTheta <- function(slope){
+  # slope = - (3 + theta) / (1 + theta)
+  # slope * (1 + theta) + theta = - 3
+  # theta  = -3 - slope / (slope + 1)
+  
+  return( (-3 - slope) / (slope + 1) )
+}
+
+interceptToM <- function(intercept, selection, theta){
+  # intercept = log((M * theta * 2) / (S * (1 + theta)^2))
+  # exp(intercept) = (M * theta * 2) / (S * (1 + theta)^2)
+  # (exp(intercept) * (S * (1 + theta)^2)) / (theta * 2) = M 
+  
+  return( (exp(intercept) * (selection * (1 + theta)^2)) / (theta * 2) )
+}

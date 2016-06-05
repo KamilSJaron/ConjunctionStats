@@ -80,7 +80,7 @@ FillSetting <- function(sim,GradTable){
 	GradTable$ss <- 0
 	GradTable$total_demes <- 0
 	GradTable$width_l <- 0
-	GradTable$width_m <- 0
+#	GradTable$width_m <- 0
 	GradTable$width_e <- 0
 # 	GradTable$width_m2 <- 0
 	
@@ -109,7 +109,7 @@ FillSetting <- function(sim,GradTable){
 		GradTable$center[i] <- getCenter(sim[[i]],GradTable[i,])
 		meanf <- sim[[i]]$meanf[order(sim[[i]]$order)]
 		GradTable$ss[i] <- getSstar(meanf, 0.05, 1)
-		GradTable$width_m[i] <- getWidthM(sim[[i]])
+#		GradTable$width_m[i] <- getWidthM(sim[[i]])
 		GradTable$width_e[i] <- getWidthE(sim[[i]])
 # 		GradTable$width_m2[i] <- getWidthM2(sim[[i]])
 # 		GradTable$width_h[i] <- getWidthH(sim[[i]],GradTable[i,])
