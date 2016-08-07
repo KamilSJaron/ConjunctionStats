@@ -4,7 +4,7 @@ ReadSetting <- function(InputFile = './setting.txt', forsim = F){
 	summaryFile <- readLines(InputFile)
 	generations <- as.numeric(strsplit(summaryFile[grepl('NUMBERofGENERATIONS',summaryFile)], "= | #")[[1]][2])
 	
-	for(l in rev(summaryFile)){
+	for(l in summaryFile){
 		l <- unlist(strsplit(l,split='#'))[1]
 		l <- unlist(strsplit(l,split='='))
 		if(grepl('RECOMBINATIONrate',l[1]) | grepl('LAMBDA',l[1])){
