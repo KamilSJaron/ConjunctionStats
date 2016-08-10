@@ -3,8 +3,8 @@ Type: Package
 Title: The package is parsing output from simulator genome admixture during secondary contact: Conjunction (http://github.com/KamilSJaron/Conjunction)
 Version: 0.23
 Date: 2016-05-31
-Author: Kamil S. Jaron
-Maintainer: Kamil <kamil.jaron@unil.ch>
+Author: Kamil S. Jaron <kamiljaron@gmail.com>
+Maintainer: Amina Echchiki <a.echchiki@gmail.com>
 Description: The package is parsing output from simulator genome admixture during secondary contact: Conjunction (http://github.com/KamilSJaron/Conjunction) and here is way longer description.
 Suggests: RColorBrewer
 License: GPL-3
