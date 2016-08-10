@@ -1,0 +1,10 @@
+citHeader("To cite reports in publications, please use:")
+
+citEntry(entry = "manual",
+    title = "ConjunctionStats: an R package for parsing the output of Conjunction, the simulator of secondary contact.",
+    author = personList( as.person("Kamil S Jaron"), as.person("Amina Echchiki")),
+    year = "2016",
+    url = "https://github.com/KamilSJaron/ConjunctionStats",
+    textVersion  = paste("Jaron K S, Echchiki A (2016).",
+        "ConjunctionStats: an R package for parsing the output of Conjunction, the simulator of secondary contact.")
+)
