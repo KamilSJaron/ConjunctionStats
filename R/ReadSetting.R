@@ -1,9 +1,25 @@
-ReadSetting <- function(InputFile = './setting.txt', forsim = F){
+#' @title ReadSetting
+#'
+#' @description
+#' \code{ReadSetting} parses the settings file used for a simulation run using Conjunction software and converts it to a data.frame object.
+#'
+#' @param Inputfile A string of characters indicating the settings file to be parsed. If no file is specified via InputFile, \code{ReadSetting} reads the file \code{settings.txt} in the current working directory. 
+#'
+#' @return A data.frame object, featuring information about the settings used in the simulation run in a R-friendly format.
+#'
+#' @author Kamil Jaron \email{kamiljaron at gmail.com}
+#'
+#' @examples{
+#'    myReadSetting = ReadSetting(InputFile='./mysetting.txt')
+#' }
+#'
+#' @export
+
+ReadSetting <- function(InputFile = './setting.txt'){
 	gradientTable <- data.frame(run = 1)
 	# 'C' = numeric(0),'L' = numeric(0),'r' = numeric(0),'s' = numeric(0),'b' = numeric(0)
 	summaryFile <- readLines(InputFile)
 	generations <- as.numeric(strsplit(summaryFile[grepl('NUMBERofGENERATIONS',summaryFile)], "= | #")[[1]][2])
-	
 	for(l in summaryFile){
 		l <- unlist(strsplit(l,split='#'))[1]
 		l <- unlist(strsplit(l,split='='))
@@ -44,7 +60,7 @@ ReadSetting <- function(InputFile = './setting.txt', forsim = F){
 		}
 		if(grepl('NUMBERofSAVES',l[1])){
 		  saves <- as.numeric(l[2])
-			if(saves > 1 & forsim == F){
+			if(saves > 1){
 				gradientTable <- merge(data.frame('G' = (generations / saves) * 1:saves) ,gradientTable)
 			}
 		}
@@ -55,113 +71,7 @@ ReadSetting <- function(InputFile = './setting.txt', forsim = F){
 				gradientTable <- merge(data.frame('D' = as.numeric(l[2])),gradientTable)
 			}
 		}
-	# if("EDGE" %in% strsplit(l,split=' ')[[1]]){}
 	}
 	gradientTable$run <- c()
-	
-# normalization 1. delete useless demes.
-	
 	return(gradientTable)
-}
-
-GetVectorSplit <- function(l){
-  return(as.double(
-    unlist(strsplit(
-      strsplit(
-        strsplit(l[2],
-                 split=c('\\['))[[1]][2],
-        split='\\]')[[1]][1],
-      split="\\, |\\,|;"[[1]]))))
-}
-
-FillSetting <- function(sim,GradTable){
-	GradTable$slope <- 0
-	GradTable$center <- 0
-	GradTable$ss <- 0
-	GradTable$total_demes <- 0
-	GradTable$width_l <- 0
-#	GradTable$width_m <- 0
-	GradTable$width_e <- 0
-# 	GradTable$width_m2 <- 0
-	
-	for(i in 1:length(sim)){
-		GradTable$total_demes[i] <- nrow(sim[[i]])
-		
-		if(any(sim[[i]]$meanHI == 1)){
-			B1 <- min(sim[[i]]$order[sim[[i]]$meanHI == 1]):max(sim[[i]]$order[sim[[i]]$meanHI == 1])
-			maxB1 <- max(c(B1[!(B1 %in% sim[[i]]$order[sim[[i]]$meanHI == 1])],min(sim[[i]]$order[sim[[i]]$meanHI == 1]) - 1))
-		} else {
-			maxB1 <- max(sim[[i]]$order)
-		}
-		
-		if(any(sim[[i]]$meanHI == 0)){
-			B0 <- min(sim[[i]]$order[sim[[i]]$meanHI == 0]):max(sim[[i]]$order[sim[[i]]$meanHI == 0])
-			minB0 <- min(c(B0[!(B0 %in% sim[[i]]$order[sim[[i]]$meanHI == 0])]),max(sim[[i]]$order[sim[[i]]$meanHI == 0]) + 1)
-		} else {
-			minB0 <- 1
-		}
-		
-		sim[[i]] <- sim[[i]][sim[[i]]$order %in% (minB0:maxB1),]
-		ordervec <- sim[[i]]$order - minB0 + 1
-		sim[[i]]$order = ordervec
-		
-		GradTable$slope[i] <- getSlope(sim[[i]],GradTable[i,])
-		GradTable$center[i] <- getCenter(sim[[i]],GradTable[i,])
-		meanf <- sim[[i]]$meanf[order(sim[[i]]$order)]
-		GradTable$ss[i] <- getSstar(meanf, 0.05, 1)
-#		GradTable$width_m[i] <- getWidthM(sim[[i]])
-		GradTable$width_e[i] <- getWidthE(sim[[i]])
-# 		GradTable$width_m2[i] <- getWidthM2(sim[[i]])
-# 		GradTable$width_h[i] <- getWidthH(sim[[i]],GradTable[i,])
-	}
-	GradTable$width_l <- 4 * (GradTable$slope^-1)
-	return(GradTable)
-}
-
-Fill2DSetting <- function(sim,GradTable){
-	lsize <- sim[[1]]$DEME[sim[[1]]$DOWN == 0] 
-	
-	for(i in 0:lsize){
-		GradTable[[paste("width_",i,sep='')]] <- 0
-		GradTable[[paste("center_",i,sep='')]] <- 0
-	}
-	GradTable$total_demes <- 0
-	
-	for(i in 1:length(sim)){
-		B1s <- seq(max(sim[[i]]$order),max(sim[[i]]$order),length = (lsize + 1))
-		B0s <- seq(0,0,length = (lsize + 1))
-		GradTable$total_demes[i] <- nrow(sim[[i]])
-		
-		for(h in 0:lsize){
-			selected <- seq(h,max(sim[[i]]$DEME),by = lsize+1)
-			subtable <- sim[[i]][sim[[i]]$DEME %in% selected,]
-			
-			if(any(subtable$meanHI == 1)){
-				B1 <- min(subtable$order[subtable$meanHI == 1]):max(subtable$order[subtable$meanHI == 1])
-				B1s[h+1] <- max(c(B1[!(B1 %in% subtable$order[subtable$meanHI == 1])],min(subtable$order[subtable$meanHI == 1]) - 1))
-			}
-			
-			if(any(subtable$meanHI == 0)){
-				B0 <- min(subtable$order[subtable$meanHI == 0]):max(subtable$order[subtable$meanHI == 0])
-				B0s[h+1] <- min(c(B0[!(B0 %in% subtable$order[subtable$meanHI == 0])]),max(subtable$order[subtable$meanHI == 0]) + 1)
-			}
-		}
-		
-		minB0 <- min(B0s)
-		maxB1 <- max(B1s) 
-		
-		for(h in 0:lsize){
-			selected <- seq(h,max(sim[[i]]$DEME),by = lsize+1)
-			subtable <- sim[[i]][sim[[i]]$DEME %in% selected,]
-			
-			subtable <- subtable[subtable$order %in% (minB0:maxB1),]
-			ordervec <- subtable$order - minB0 + 1
-			subtable$order = ordervec
-			
-			GradTable[[paste("width_",h,sep='')]][i] <- 4 * (getSlope(subtable,GradTable[i,])^-1)
-			GradTable[[paste("center_",h,sep='')]][i] <- getCenter(subtable,GradTable[i,])
-		}
-		
-	}
-	return(GradTable)
 }
