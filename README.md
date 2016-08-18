@@ -4,11 +4,11 @@ output: html_document
 # ConjunctionStats: an R package for parsing the output of Conjunction, the simulator of secondary contact.
 ##### Kamil S Jaron, Amina Echchiki
 
-```ConjunctionStats``` is a package for parsing the output of Conjunction (https://github.com/KamilSJaron/Conjunction) into R, to allow statistical analysis. Conjunction [what does it do?]
+```ConjunctionStats``` is a package for parsing the output of 
+Conjunction (https://github.com/KamilSJaron/Conjunction) into R, to 
+allow statistical analysis.
 
-The package []
-
-The package allows []
+#TODO: description of Conjunction and usage of ConjunctionStats
 
 
 # Installation 
@@ -18,8 +18,9 @@ The package allows []
 In terminal: 
 
     git clone https://github.com/KamilSJaron/ConjunctionStats.git
+    cd ./ConjunctionStats/	
 
-In R: 
+In R:
 ``` {r}
 install.packages("./ConjunctionStats", repos = NULL, type="source")
 ```
@@ -33,10 +34,20 @@ library(devtools)
 install_github("KamilSJaron/ConjunctionStats", build_vignettes=FALSE)
 ```
 
-# How to use ConjunctionStats package
+# Usage
 
 ### Load the package
 
 ``` {r}
 library(ConjunctionStats)
+```
+
+### Access functions and documentation
+
+``` {r}
+# display function source code: FunctionName
+# display function documentation: ?FunctionName
+# example
+ReadSetting
+?ReadSetting
 ```
