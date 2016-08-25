@@ -1,11 +1,11 @@
 #' @title ReadSummary
 #'
 #' @description
-#' \code{ReadSummary} parses the output file of a simulation run using Conjunction software and converts it to a list of data.frame objects. 
+#' \code{ReadSummary} parses the output file of a simulation run using Conjunction software and converts it to a list of data.frame objects.
 #'
 #' @param nameIn A string of characters indicating the simulation output file to be parsed. The output file can be defined following instructions on: https://github.com/KamilSJaron/Conjunction/wiki#usage
 #'
-#' @return A list of data.frame objects, in which each list item, a data.frame, is a simulation run, and every row of the data.frame is a deme. 
+#' @return A list of data.frame objects, in which each list item, a data.frame, is a simulation run, and every row of the data.frame is a deme.
 #'
 #' @author Kamil Jaron \email{kamiljaron at gmail.com}
 #'
@@ -65,7 +65,7 @@ ReadSummary=function(nameIn){
 	for(j in 2:nrow(tableTemp)){
 		tableTemp$order[tableTemp$DEME == nextRight] <- j
 		nextRight <- tableTemp$RIGHT[tableTemp$order == j]
-	}	
+	}
 	sim[[i]] <- tableTemp
 	return(sim)
 }

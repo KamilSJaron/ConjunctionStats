@@ -3,7 +3,7 @@
 #' @description
 #' \code{ReadSetting} parses the settings file used for a simulation run using Conjunction software and converts it to a data.frame object.
 #'
-#' @param Inputfile A string of characters indicating the settings file to be parsed. If no file is specified via InputFile, \code{ReadSetting} reads the file \code{settings.txt} in the current working directory. 
+#' @param Inputfile A string of characters indicating the settings file to be parsed. If no file is specified via InputFile, \code{ReadSetting} reads the file \code{settings.txt} in the current working directory.
 #'
 #' @return A data.frame object, featuring information about the settings used in the simulation run in a R-friendly format.
 #'
@@ -20,40 +20,42 @@ ReadSetting <- function(InputFile = './setting.txt'){
 	# 'C' = numeric(0),'L' = numeric(0),'r' = numeric(0),'s' = numeric(0),'b' = numeric(0)
 	summaryFile <- readLines(InputFile)
 	generations <- as.numeric(strsplit(summaryFile[grepl('NUMBERofGENERATIONS',summaryFile)], "= | #")[[1]][2])
+	replicates <- 1
+
 	for(l in summaryFile){
 		l <- unlist(strsplit(l,split='#'))[1]
 		l <- unlist(strsplit(l,split='='))
 		if(grepl('RECOMBINATIONrate',l[1]) | grepl('LAMBDA',l[1])){
 			if(grepl("\\[",l[2])){
-				gradientTable <- merge(gradientTable,data.frame('r' = GetVectorSplit(l)))
+				gradientTable <- merge(gradientTable,data.frame('r' = getVectorSplit(l)))
 			} else {
 				gradientTable <- merge(data.frame('r' = as.numeric(l[2])),gradientTable)
 			}
 		}
 		if(grepl('SELECTION',l[1])){
 			if(grepl("\\[",l[2])){
-				gradientTable <- merge(gradientTable,data.frame('s' = GetVectorSplit(l)))
+				gradientTable <- merge(gradientTable,data.frame('s' = getVectorSplit(l)))
 			} else {
 				gradientTable <- merge(data.frame('s' = as.numeric(l[2])),gradientTable)
 			}
 		}
 		if(grepl('CHROM',l[1])){
 			if(grepl("\\[",l[2])){
-				gradientTable <- merge(gradientTable,data.frame('C' = GetVectorSplit(l)))
+				gradientTable <- merge(gradientTable,data.frame('C' = getVectorSplit(l)))
 			} else {
 				gradientTable <- merge(data.frame('C' = as.numeric(l[2])),gradientTable)
 			}
 		}
 		if(grepl('LOCI',l[1])){
 			if(grepl("\\[",l[2])){
-				gradientTable <- merge(gradientTable,data.frame('L' = GetVectorSplit(l)))
+				gradientTable <- merge(gradientTable,data.frame('L' = getVectorSplit(l)))
 			} else {
 				gradientTable <- merge(data.frame('L' = as.numeric(l[2])),gradientTable)
 			}
 		}
 		if(grepl('BETA',l[1])){
 			if(grepl("\\[",l[2])){
-				gradientTable <- merge(gradientTable,data.frame('b' = GetVectorSplit(l)))
+				gradientTable <- merge(gradientTable,data.frame('b' = getVectorSplit(l)))
 			} else {
 				gradientTable <- merge(data.frame('b' = as.numeric(l[2])),gradientTable)
 			}
@@ -71,6 +73,12 @@ ReadSetting <- function(InputFile = './setting.txt'){
 				gradientTable <- merge(data.frame('D' = as.numeric(l[2])),gradientTable)
 			}
 		}
+		if(grepl('REPLICATES',l[1])){
+			replicates <- as.numeric(l[2])
+		}
+	}
+	if(replicates > 1){
+			gradientTable <- merge(data.frame('n' = 1:replicates),gradientTable)
 	}
 	gradientTable$run <- c()
 	return(gradientTable)
