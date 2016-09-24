@@ -78,7 +78,7 @@ ReadSetting <- function(InputFile = './setting.txt'){
 		}
 	}
 	if(replicates > 1){
-			gradientTable <- merge(data.frame('n' = 1:replicates),gradientTable)
+			gradientTable <- merge(gradientTable,data.frame('n' = 1:replicates))
 	}
 	gradientTable$run <- c()
 	return(gradientTable)

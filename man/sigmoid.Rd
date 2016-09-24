@@ -7,7 +7,8 @@
 sigmoid(params, x)
 }
 \description{
-\code{sigmoid}
+\code{sigmoid} logistic function, parameters a, b, c are members of vector
+params
 }
 \author{
 Kamil Jaron \email{kamiljaron at gmail.com}

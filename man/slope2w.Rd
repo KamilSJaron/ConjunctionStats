@@ -10,7 +10,9 @@ slope2w(slope)
 \item{slope}{}
 }
 \description{
-\code{slope2w}
+\code{slope2w} width represented as parameter of logistic function have to be
+multiplied by four to get a slope in hypertangent function. This function
+computes width as an inverse of slope after conversion to hypertangent units
 }
 \author{
 Kamil Jaron \email{kamiljaron at gmail.com}

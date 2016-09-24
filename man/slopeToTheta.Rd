@@ -10,7 +10,8 @@ slopeToTheta(slope)
 \item{slope}{}
 }
 \description{
-\code{slopeToTheta}
+\code{slopeToTheta} function made for backward engenerring. It computes theta
+from the slope of the log log distribution (which is linear)
 }
 \author{
 Kamil Jaron \email{kamiljaron at gmail.com}

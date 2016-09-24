@@ -7,9 +7,9 @@
 ss2w(ss, sigma = sqrt(0.5))
 }
 \arguments{
-\item{ss}{}
+\item{ss}{is s*, effective selection}
 
-\item{sigma}{}
+\item{sigma}{is square root of dispersal}
 }
 \description{
 \code{ss2w}

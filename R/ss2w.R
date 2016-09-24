@@ -3,16 +3,13 @@
 #' @description
 #' \code{ss2w}
 #'
-#' @param ss 
+#' @param ss is s*, effective selection
 #'
-#' @param sigma
+#' @param sigma is square root of dispersal
 #'
 #' @author Kamil Jaron \email{kamiljaron at gmail.com}
 #'
 #' @export
-
-# TODO: header
-# comment: s-star to width
 
 ss2w = function(ss,sigma = sqrt(0.5)){
 	return((2 * sigma) / sqrt(ss))

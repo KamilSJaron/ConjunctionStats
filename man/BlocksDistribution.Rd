@@ -7,16 +7,19 @@
 BlocksDistribution(x, S, R, M)
 }
 \arguments{
-\item{x}{}
+\item{x}{proportion of blocks (0 .. 1)}
 
-\item{S}{}
+\item{S}{overall selecion acting on genome of hybrids}
 
-\item{R}{}
+\item{R}{mean number of recombination events per generation per individual}
 
-\item{M}{}
+\item{M}{number of migrants exchanged every generation}
 }
 \description{
 \code{BlocksDistribution} is a function called inside a plot function.
+It computes a theorerical distribution of blocks in case of two neigbouring
+demes given selection against heterozygotes, recombination rate and
+number of migrants per generation.
 }
 \author{
 Kamil Jaron \email{kamiljaron at gmail.com}

@@ -1,15 +1,14 @@
 #' @title slopeToTheta
 #'
 #' @description
-#' \code{slopeToTheta}
+#' \code{slopeToTheta} function made for backward engenerring. It computes theta
+#' from the slope of the log log distribution (which is linear)
 #'
 #' @param slope
 #'
 #' @author Kamil Jaron \email{kamiljaron at gmail.com}
 #'
 #' @export
-
-# TODO: header
 
 slopeToTheta <- function(slope){
   # slope = - (3 + theta) / (1 + theta)
