@@ -19,9 +19,9 @@ A data.frame object, integrating information about the settings used in the simu
 }
 \examples{
 {
-   mysim=ReadSummary(nameIn='../../Conjunction/out')
-   myGradTable=ReadSetting('../../Conjunction/setting.txt')
-   myFill2DSetting = Fill2DSetting(sim=mysim, GradTable=myGradTable)
+   mysim <- ReadSummary(nameIn='../../Conjunction/out')
+   myGradTable <- ReadSetting('../../Conjunction/setting.txt')
+   myGradTable <- Fill2DSetting(sim=mysim, GradTable=myGradTable)
 }
 
 }

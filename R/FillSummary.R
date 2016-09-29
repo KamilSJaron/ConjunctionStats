@@ -1,11 +1,15 @@
 #' @title FillSummary
 #'
 #' @description
-#' \code{FillSummary} integrates the the output of \code{ReadSummary} and \code{ReadSetting} functions into a list of data.frame objects. Warning: choose this function if Conjunction simulation was run in a 1D world; choose alternative function \code{Fill2DSummary} instead if Conjunction simulation was run in a 2D world.
+#' \code{FillSummary} integrates the the output of \code{ReadSummary} and
+#' \code{ReadSetting} functions into a list of data.frame objects.
+#' Warning: choose this function if Conjunction simulation was run in a 1D world;
+#' choose alternative function \code{Fill2DSummary} instead
+#' if Conjunction simulation was run in a 2D world.
 #'
-#' @param sim A string of characters indicating a ReadSummary object. Please refer to documentation of \code{ReadSummary} function for detailed usage. 
+#' @param sim A string of characters indicating a ReadSummary object. Please refer to documentation of \code{ReadSummary} function for detailed usage.
 #'
-#' @param centers A string of characters indicating a center variable of ReadSetting object. Please refer to documentation of \code{ReadSetting} function for detailed usage. 
+#' @param centers A string of characters indicating a center variable of ReadSetting object. Please refer to documentation of \code{ReadSetting} function for detailed usage.
 #'
 #' @return A data.frame object, integrating information about the settings used in the simulation run and the summary of the simulation run in a R-friendly format.
 #'
@@ -23,7 +27,7 @@
 #TODO: comment inline, notes
 
 FillSummary <- function(sim,centers){
-	for(i in 1:length(sim)){	
+	for(i in 1:length(sim)){
 		B1max <- max(sim[[i]]$order)
 		B0min <- 1
 		if(any(sim[[i]]$meanHI == 1)){

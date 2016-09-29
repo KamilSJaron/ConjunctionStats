@@ -15,7 +15,11 @@ FillSummary(sim, centers)
 A data.frame object, integrating information about the settings used in the simulation run and the summary of the simulation run in a R-friendly format.
 }
 \description{
-\code{FillSummary} integrates the the output of \code{ReadSummary} and \code{ReadSetting} functions into a list of data.frame objects. Warning: choose this function if Conjunction simulation was run in a 1D world; choose alternative function \code{Fill2DSummary} instead if Conjunction simulation was run in a 2D world.
+\code{FillSummary} integrates the the output of \code{ReadSummary} and
+\code{ReadSetting} functions into a list of data.frame objects.
+Warning: choose this function if Conjunction simulation was run in a 1D world;
+choose alternative function \code{Fill2DSummary} instead
+if Conjunction simulation was run in a 2D world.
 }
 \examples{
 {

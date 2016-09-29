@@ -1,7 +1,7 @@
-#' @title PlotWidths
+#' @title PlotStat
 #'
 #' @description
-#' \code{PlotWidths} is a function for ploting widths with respect to one or two parameters specified by user
+#' \code{PlotStat} is a function for ploting a stat of set of simulation with respect to one or two parameters specified by user
 #'
 #' @param GradTable A filled table of simulations
 #'
@@ -11,7 +11,7 @@
 #'
 #' @param legend_position is changing a position of the legend in the picture
 #'
-#' @param if add = T funciton will just add points to existing plot
+#' @param add if q= T funciton will just add points to existing plot
 #'
 #' @param pal is a vector of colous used for colouring categories of the second parameter. By default the pallete will be generated as 'Set1' color brewer pallete with apropriate number of categories
 #'
@@ -23,7 +23,7 @@
 #'
 #' @export
 
-PlotWidths <- function(GradTable, par1 = 's', par2 = NA,
+PlotStat <- function(GradTable, stat = 'width_l', par1 = 's', par2 = NA,
                        legend_position = 'topright', add = F, pal = NA,
                        xlim = NA, ylim = NA){
   # testing
@@ -40,19 +40,19 @@ PlotWidths <- function(GradTable, par1 = 's', par2 = NA,
     xlim = c(min(GradTable[,par1]),max(GradTable[,par1]))
   }
   if(any(is.na(ylim))){
-    ylim = c(min(GradTable$width_l, na.rm = T),max(GradTable$width_l, na.rm = T))
+    ylim = c(min(GradTable[,stat], na.rm = T),max(GradTable[,stat], na.rm = T))
   }
   # ploting frame
   if(add == F){
     plot(numeric(0),
       xlim = xlim,
       ylim = ylim,
-      xlab = par1, ylab = 'cline width')
+      xlab = par1, ylab = stat)
   }
 
   # ploting data
   if(is.na(par2)){
-    points(GradTable[,par1],  GradTable$width_l, pch = 20)
+    points(GradTable[,par1],  GradTable[,stat], pch = 20)
   } else {
     if(any(is.na(pal))){
       require(RColorBrewer)
@@ -60,7 +60,7 @@ PlotWidths <- function(GradTable, par1 = 's', par2 = NA,
     }
     for(par_state in unique(GradTable[,par2])){
       SubTable <- subset(GradTable, GradTable[,par2] == par_state)
-      points(SubTable[,par1],  SubTable$width_l,
+      points(SubTable[,par1],  SubTable[,stat],
         pch = 20,
         col = pal[which(par_state == unique(GradTable[,par2]))])
     }
