@@ -9,6 +9,6 @@
 
 # TODO: header
 
-logit=function(vector){
+logit <- function(vector){
 	return(log(vector / (1 - vector)))
 }

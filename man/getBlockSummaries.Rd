@@ -17,7 +17,7 @@ patterm
 }
 \examples{
 {
-  
+
 }
 
 }

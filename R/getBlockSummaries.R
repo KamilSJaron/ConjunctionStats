@@ -1,23 +1,23 @@
 #' @title getBlockSummaries
 #'
 #' @description
-#' \code{getBlockSummaries} 
+#' \code{getBlockSummaries}
 #'
 #' @param path
 #'
 #' @return patterm
-#' 
+#'
 #' @author Kamil Jaron \email{kamiljaron at gmail.com}
 #
 #' @examples{
-#'   
+#'
 #' }
 #'
 #' @export
 
 # TODO: header, ask for .dat
 
-getBlockSummaries = function(path = '.', pattern = '.dat'){
+getBlockSummaries <- function(path = '.', pattern = '.dat'){
   AblocksList <- list(list())
   BblocksList <- list(list())
   nameIn <- dir(path, pattern = pattern)

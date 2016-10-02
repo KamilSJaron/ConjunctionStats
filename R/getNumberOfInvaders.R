@@ -19,7 +19,7 @@
 
 # TODO: header, ask for .dat
 
-getNumberOfInvaders = function(sim, path = '.', pattern = '.dat'){
+getNumberOfInvaders <- function(sim, path = '.', pattern = '.dat'){
   #path = '../160525_1d_coupling/'
   #sim = sim_1M
   #pattern = '.dat'

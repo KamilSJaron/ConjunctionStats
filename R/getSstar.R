@@ -29,7 +29,7 @@ getSstar <- function(meanf,c,depth) {
 				, start=list(a=a,b=b,c=c)))['a']
 				)
 		},
-		error=function(cond) {
+		error <- function(cond) {
 			if(depth > 256){
 				return(NA)
 			} else {

@@ -9,7 +9,7 @@
 
 # TODO: header
 
-PartSums=function(vector){
+PartSums <- function(vector){
 	out <- c(vector[1])
 	for(i in 2:length(vector)){
 		out <- c(out,(out[i-1] + vector[i]))

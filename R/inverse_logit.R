@@ -7,6 +7,6 @@
 #'
 #' @export
 
-inverse_logit=function(vector){
+inverse_logit <- function(vector){
 	return(exp(vector) / (1 + exp(vector)))
 }

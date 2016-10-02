@@ -20,7 +20,7 @@
 # TODO: header
 # comment: check Stuart's paper; for 0D
 
-getPj = function(namePattern,save = 1,lim = 9){
+getPj <- function(namePattern,save = 1,lim = 9){
 	nameIn <- c()
 	Pjs <- c()
 	for(i in 1:lim){

@@ -13,7 +13,7 @@
 
 # TODO: header
 
-getCenter=function(simtab,GradTableLine){
+getCenter <- function(simtab,GradTableLine){
 	out <- tryCatch(
 		{
 			binit <- 4 * (sqrt(8)*(sqrt(0.5) / sqrt(GradTableLine$s)))^-1
@@ -23,7 +23,7 @@ getCenter=function(simtab,GradTableLine){
 			start = list(a = 1, b = binit, c = length(x) / 2))
 			return(coef(fitModel)[3])
 		},
-		error=function(cond) {
+		error <- function(cond) {
 			return(NA)
 		}
 	)    

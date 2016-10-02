@@ -15,7 +15,7 @@
 #'
 #' @export
 
-ReadSummary=function(nameIn){
+ReadSummary <- function(nameIn){
 	summaryFile <- readLines(nameIn)
 # 	index of red simulation
 	i = 0

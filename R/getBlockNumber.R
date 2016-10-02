@@ -1,8 +1,8 @@
 #' @title getBlockNumber
 #'
 #' @description
-#' \code{getBlockNumber} 
-#'  
+#' \code{getBlockNumber}
+#'
 #' @param namePattern
 #'
 #' @param save
@@ -15,7 +15,7 @@
 
 # TODO: header
 
-getBlockNumber = function(namePattern,save = 1,lim = 9){
+getBlockNumber <- function(namePattern,save = 1,lim = 9){
 	nameIn <- c()
 	BlockNumber <- c()
 	for(i in 1:lim){

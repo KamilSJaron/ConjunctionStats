@@ -18,7 +18,7 @@
 # TODO: header
 # comment: for 0D
 
-getPopulationSize = function(LogFile,generation){
+getPopulationSize <- function(LogFile,generation){
 	Js <- c()
 	counter = 0
 	for(l in LogFile){

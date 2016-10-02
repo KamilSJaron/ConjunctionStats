@@ -9,7 +9,7 @@
 
 # TODO: header
 
-plotLogitZone=function(FileName, GradTable, sim, sel, ran = 0, type = 'pdf', leg = T){
+plotLogitZone <- function(FileName, GradTable, sim, sel, ran = 0, type = 'pdf', leg = T){
 	if(type == 'pdf'){
 		pdf(FileName)
 	} else {

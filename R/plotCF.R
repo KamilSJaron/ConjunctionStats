@@ -19,7 +19,7 @@
 
 # TODO: header
 
-plotCF=function(FileName, GradTable, sim, i, ran = 5){
+plotCF <- function(FileName, GradTable, sim, i, ran = 5){
 	pdf(FileName)
 		palette <- brewer.pal(5,"RdYlBu")
 		par(mfrow=c(1,1))

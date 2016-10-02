@@ -15,7 +15,7 @@
 
 # TODO: header
 
-plotWC=function(FileName, GradFileName, SimTabName){
+plotWC <- function(FileName, GradFileName, SimTabName){
 	sim <- ReadSummary(SimTabName)
 	GradTable <- ReadSetting(GradFileName)
 	GradTable <- FillSetting(sim,GradTable)

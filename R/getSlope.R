@@ -13,7 +13,7 @@
 
 # TODO: header
 
-getSlope=function(simtab,GradTableLine){
+getSlope <- function(simtab,GradTableLine){
 	out <- tryCatch(
 		{
 		  if(GradTableLine$s == 0){
@@ -27,7 +27,7 @@ getSlope=function(simtab,GradTableLine){
 			start = list(a = 1, b = binit, c = length(x) / 2))
 			return(coef(fitModel)[2])
 		},
-		error=function(cond) {
+		error <- function(cond) {
 			return(NA)
 		}
 	)    

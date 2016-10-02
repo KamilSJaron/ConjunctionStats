@@ -8,6 +8,6 @@
 #'
 #' @export
 
-sigmoid = function(params, x) {
+sigmoid <- function(params, x) {
 	params[1] / (1 + exp(-params[2] * (x - params[3])))
 }

@@ -13,7 +13,7 @@
 
 # TODO: header
 
-getBoth=function(simtab,s){
+getBoth <- function(simtab,s){
 	out <- tryCatch(
 		{
 			binit <- 4 * (sqrt(8)*(sqrt(0.5) / sqrt(s)))^-1
@@ -24,7 +24,7 @@ getBoth=function(simtab,s){
 			res <- c(coef(fitModel)[2],coef(fitModel)[3])
 			return(res)
 		},
-		error=function(cond) {
+		error <- function(cond) {
 			return(NA)
 		}
 	)    
