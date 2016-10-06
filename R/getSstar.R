@@ -4,11 +4,11 @@
 #' \code{getSstar} is a function called inside\code{FillSetting}.
 #'
 #' @param meanf
-#' 
+#'
 #' @param c
-#' 
+#'
 #' @param depth
-#' 
+#'
 #' @author Kamil Jaron \email{kamiljaron at gmail.com}
 #'
 #' @export
@@ -29,13 +29,13 @@ getSstar <- function(meanf,c,depth) {
 				, start=list(a=a,b=b,c=c)))['a']
 				)
 		},
-		error <- function(cond) {
+		error=function(cond) {
 			if(depth > 256){
 				return(NA)
 			} else {
 				return(getSstar(meanf,c + 0.05,depth+1))
 			}
 		}
-	)    
+	)
 	return(out)
 }

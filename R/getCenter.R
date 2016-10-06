@@ -19,13 +19,13 @@ getCenter <- function(simtab,GradTableLine){
 			binit <- 4 * (sqrt(8)*(sqrt(0.5) / sqrt(GradTableLine$s)))^-1
 			y = simtab$meanHI
 			x = simtab$order
-			fitModel = nls(y ~ a / (1 + exp(-b * (x - c))), 
+			fitModel = nls(y ~ a / (1 + exp(-b * (x - c))),
 			start = list(a = 1, b = binit, c = length(x) / 2))
 			return(coef(fitModel)[3])
 		},
-		error <- function(cond) {
+		error=function(cond) {
 			return(NA)
 		}
-	)    
+	)
 	return(out)
 }

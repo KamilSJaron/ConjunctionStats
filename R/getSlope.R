@@ -1,7 +1,7 @@
 #' @title getSlope
 #'
 #' @description
-#' \code{getSlope} is a function called inside\code{FillSetting} and \code{Fill2DSetting} 
+#' \code{getSlope} is a function called inside\code{FillSetting} and \code{Fill2DSetting}
 #'
 #' @param simtab
 #'
@@ -23,13 +23,13 @@ getSlope <- function(simtab,GradTableLine){
 		  }
 			y = simtab$meanHI
 			x = simtab$order
-			fitModel = nls(y ~ a / (1 + exp(-b * (x - c))), 
+			fitModel = nls(y ~ a / (1 + exp(-b * (x - c))),
 			start = list(a = 1, b = binit, c = length(x) / 2))
 			return(coef(fitModel)[2])
 		},
-		error <- function(cond) {
+		error=function(cond) {
 			return(NA)
 		}
-	)    
+	)
 	return(out)
 }
