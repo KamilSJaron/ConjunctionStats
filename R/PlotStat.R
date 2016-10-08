@@ -3,7 +3,9 @@
 #' @description
 #' \code{PlotStat} is a function for ploting a stat of set of simulation with respect to one or two parameters specified by user
 #'
-#' @param GradTable A filled table of simulations
+#' @param GradTable A dataframe (usually output of \code{FillSetting})
+#'
+#' @param stat The variable to be plot on y axis
 #'
 #' @param par1 The variable to be plot on x axis
 #'

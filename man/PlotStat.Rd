@@ -9,7 +9,9 @@ PlotStat(GradTable, stat = "width_l", par1 = "s", par2 = NA,
   ylim = NA)
 }
 \arguments{
-\item{GradTable}{A filled table of simulations}
+\item{GradTable}{A dataframe (usually output of \code{FillSetting})}
+
+\item{stat}{The variable to be plot on y axis}
 
 \item{par1}{The variable to be plot on x axis}
 

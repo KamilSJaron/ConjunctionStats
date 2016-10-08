@@ -15,12 +15,8 @@
 
 # TODO: header
 
-plotWC <- function(FileName, GradFileName, SimTabName){
+PlotWC <- function(GradTable, Sim, FileNam = NA){
 	library(RColorBrewer)
-	sim <- ReadSummary(SimTabName)
-	GradTable <- ReadSetting(GradFileName)
-	GradTable <- FillSetting(sim,GradTable)
-	sim <- FillSummary(sim,GradTable$center)
 	palette <- brewer.pal(5,"RdYlBu")
 	palette[3] <- brewer.pal(6,"RdYlBu")[3]
 	pdf(paste(FileName,'.pdf',sep=''))
