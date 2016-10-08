@@ -7,10 +7,11 @@
 getWidthE(simtab)
 }
 \arguments{
-\item{simtab}{}
+\item{simtab}{is one of deta.frames from list of simulation summaries}
 }
 \description{
-\code{getWidthE} is a function called inside \code{FillSetting}.
+\code{getWidthE} is a function called inside \code{FillSetting}. It computes
+an estimate of width based on Endler's definition of hybrid zone width
 }
 \author{
 Kamil Jaron \email{kamiljaron at gmail.com}

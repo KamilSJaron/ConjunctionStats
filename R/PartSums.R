@@ -1,13 +1,11 @@
 #' @title PartSums
 #'
 #' @description
-#' \code{PartSums}
+#' \code{PartSums} computes a cumulative sum a of a vector
 #'
 #' @author Kamil Jaron \email{kamiljaron at gmail.com}
 #'
 #' @export
-
-# TODO: header
 
 PartSums <- function(vector){
 	out <- c(vector[1])

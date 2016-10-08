@@ -14,7 +14,8 @@ interceptToM(intercept, selection, theta)
 \item{theta}{}
 }
 \description{
-\code{interceptToM}
+\code{interceptToM} converts intercept of line deifning loglog distribution
+of blocks to number of migrants needed for distribution in 0D
 }
 \author{
 Kamil Jaron \email{kamiljaron at gmail.com}

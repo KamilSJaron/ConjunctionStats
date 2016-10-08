@@ -7,7 +7,7 @@
 logit(vector)
 }
 \description{
-\code{logit}
+\code{logit} transformation
 }
 \author{
 Kamil Jaron \email{kamiljaron at gmail.com}

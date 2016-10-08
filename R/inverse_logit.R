@@ -1,7 +1,7 @@
 #' @title inverse_logit
 #'
 #' @description
-#' \code{inverse_logit} is function a reverse to logit transformation
+#' \code{inverse_logit} is function a reverse to \code{logit} transformation
 #'
 #' @author Kamil Jaron \email{kamiljaron at gmail.com}
 #'

@@ -15,7 +15,7 @@
 
 # TODO: header
 
-PlotWC <- function(GradTable, Sim, FileNam = NA){
+PlotWC <- function(GradTable, sim, FileNam = NA){
 	library(RColorBrewer)
 	palette <- brewer.pal(5,"RdYlBu")
 	palette[3] <- brewer.pal(6,"RdYlBu")[3]

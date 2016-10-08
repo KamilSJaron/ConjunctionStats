@@ -7,7 +7,7 @@
 PartSums(vector)
 }
 \description{
-\code{PartSums}
+\code{PartSums} computes a cumulative sum a of a vector
 }
 \author{
 Kamil Jaron \email{kamiljaron at gmail.com}

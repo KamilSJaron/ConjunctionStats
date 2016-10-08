@@ -1,15 +1,14 @@
 #' @title getWidthE
 #'
 #' @description
-#' \code{getWidthE} is a function called inside \code{FillSetting}.
+#' \code{getWidthE} is a function called inside \code{FillSetting}. It computes
+#' an estimate of width based on Endler's definition of hybrid zone width
 #'
-#' @param simtab
+#' @param simtab is one of deta.frames from list of simulation summaries
 #'
 #' @author Kamil Jaron \email{kamiljaron at gmail.com}
 #'
 #' @export
-
-# TODO: header
 
 getWidthE <- function(simtab){
 	y = logit(simtab$meanHI[simtab$meanHI > 0.2 & simtab$meanHI < 0.80])
