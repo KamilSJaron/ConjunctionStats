@@ -31,7 +31,7 @@ FillSettingByHZAR <- function(sim, GradTable){
     mknAdaA <- SummaryToHZAR(sim[[i]], GradTable[i,])
     #hzar.plot.obsData(mknAdaA);
     mknAdaAmodel <- hzar.makeCline1DFreq(mknAdaA, scaling="fixed",tails="none");
-    mknAdaAmodel <- hzar.model.addBoxReq(mknAdaAmodel,-30,600);
+    mknAdaAmodel <- hzar.model.addBoxReq(mknAdaAmodel, 1 , nrow(sim[[i]]));
     mknAdaAmodelFitR <- hzar.first.fitRequest.old.ML(model=mknAdaAmodel ,
                                          mknAdaA,
                                          verbose=FALSE);
