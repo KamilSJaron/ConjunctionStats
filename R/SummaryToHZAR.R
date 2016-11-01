@@ -10,11 +10,11 @@
 #'
 #' @author Kamil Jaron \email{kamiljaron at gmail.com}
 #'
+#' @import hzar
 #' @export
 
 # TO DO: 2D clines
 SummaryToHZAR <- function(onesim, gradline){
-  library(hzar)
 
   hzartab <- hzar.doMolecularData1DPops(distance = onesim$order,
     pObs = onesim$meanHI,

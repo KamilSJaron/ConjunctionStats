@@ -22,10 +22,9 @@ A data.frame object with setting and estimates of width and centery by hzar
 }
 \examples{
 {
-   mysim <- ReadSummary(nameIn='../../Conjunction/out')
-   myGradTable <- ReadSetting(InputFile='../../Conjunction/setting.txt')
-   myGradTable <- FillSetting(sim=mysim, GradTable=myGradTable)
-   myGradTable <- FillSettingByHZAR(sim=mysim, GradTable=myGradTable)
+   mysim <- ReadSummary(nameIn='simulation.out')
+   myGradTable <- ReadSetting(InputFile='setting.txt')
+   myGradTable <- FillSettingByHZAR(mysim, myGradTable)
 }
 
 }

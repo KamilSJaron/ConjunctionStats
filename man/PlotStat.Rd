@@ -6,10 +6,11 @@
 \usage{
 PlotStat(GradTable, stat = "width_l", par1 = "s", par2 = NA,
   legend_position = "topright", add = F, pal = NA, xlim = NA,
-  ylim = NA)
+  ylim = NA, ...)
 }
 \arguments{
-\item{GradTable}{A dataframe (usually output of \code{FillSetting})}
+\item{GradTable}{A dataframe (usually output of \code{FillSetting}) or
+\code{FillSettingByHZAR}}
 
 \item{stat}{The variable to be plot on y axis}
 
@@ -19,13 +20,15 @@ PlotStat(GradTable, stat = "width_l", par1 = "s", par2 = NA,
 
 \item{legend_position}{is changing a position of the legend in the picture}
 
-\item{add}{if q= T funciton will just add points to existing plot}
+\item{add}{if = T funciton will just add points to existing plot}
 
 \item{pal}{is a vector of colous used for colouring categories of the second parameter. By default the pallete will be generated as 'Set1' color brewer pallete with apropriate number of categories}
 
 \item{xlim}{is equvalent of parameter xlim from plot}
 
 \item{ylim}{is equvalent of ylim from plot}
+
+\item{...}{addenitional arguments passed to plot function}
 }
 \description{
 \code{PlotStat} is a function for ploting a stat of set of simulation with respect to one or two parameters specified by user

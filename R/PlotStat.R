@@ -3,7 +3,8 @@
 #' @description
 #' \code{PlotStat} is a function for ploting a stat of set of simulation with respect to one or two parameters specified by user
 #'
-#' @param GradTable A dataframe (usually output of \code{FillSetting})
+#' @param GradTable A dataframe (usually output of \code{FillSetting}) or
+#' \code{FillSettingByHZAR}
 #'
 #' @param stat The variable to be plot on y axis
 #'
@@ -13,7 +14,7 @@
 #'
 #' @param legend_position is changing a position of the legend in the picture
 #'
-#' @param add if q= T funciton will just add points to existing plot
+#' @param add if = T funciton will just add points to existing plot
 #'
 #' @param pal is a vector of colous used for colouring categories of the second parameter. By default the pallete will be generated as 'Set1' color brewer pallete with apropriate number of categories
 #'
@@ -21,13 +22,16 @@
 #'
 #' @param ylim is equvalent of ylim from plot
 #'
+#' @param ... addenitional arguments passed to plot function
+#'
 #' @author Kamil Jaron \email{kamiljaron at gmail.com}
 #'
+#' @importFrom RColorBrewer brewer.pal
 #' @export
 
 PlotStat <- function(GradTable, stat = 'width_l', par1 = 's', par2 = NA,
                        legend_position = 'topright', add = F, pal = NA,
-                       xlim = NA, ylim = NA){
+                       xlim = NA, ylim = NA, ...){
   # testing
   if(!(par1 %in% colnames(GradTable))){
     message('parameter par1 has to be name of one of the columns of the input table')
@@ -48,8 +52,7 @@ PlotStat <- function(GradTable, stat = 'width_l', par1 = 's', par2 = NA,
   if(add == F){
     plot(numeric(0),
       xlim = xlim,
-      ylim = ylim,
-      xlab = par1, ylab = stat)
+      ylim = ylim, ...)
   }
 
   # ploting data
@@ -57,7 +60,6 @@ PlotStat <- function(GradTable, stat = 'width_l', par1 = 's', par2 = NA,
     points(GradTable[,par1],  GradTable[,stat], pch = 20)
   } else {
     if(any(is.na(pal))){
-      require(RColorBrewer)
       pal <- brewer.pal(length(unique(GradTable[,par2])), 'Set1')
     }
     for(par_state in unique(GradTable[,par2])){

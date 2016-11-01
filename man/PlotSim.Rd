@@ -10,8 +10,6 @@ PlotSim(onesim, Gradline, legend_position = "bottomright", add = F,
 \arguments{
 \item{onesim}{is a data frame of stats of one simulation}
 
-\item{Gradline}{a line of GradTable A filled table of simulations}
-
 \item{legend_position}{is changing a position of the legend in the picture}
 
 \item{add}{if True funciton will just add points to existing plot}
@@ -21,6 +19,9 @@ PlotSim(onesim, Gradline, legend_position = "bottomright", add = F,
 \item{xlim}{is equvalent of parameter xlim from plot}
 
 \item{ylim}{is equvalent of ylim from plot}
+
+\item{GradTable}{A dataframe (usually output of \code{FillSetting}) or
+\code{FillSettingByHZAR}}
 }
 \description{
 \code{PlotSim} is a function for ploting an overview of one simulation

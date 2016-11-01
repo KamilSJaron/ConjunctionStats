@@ -4,7 +4,7 @@
 \alias{PlotWidthEstimates}
 \title{PlotWidthEstimates}
 \usage{
-PlotWidthEstimates(GradLine, onesim, i, range = NA)
+PlotWidthEstimates(GradLine, onesim, range = NA)
 }
 \arguments{
 \item{GradLine}{a line from filled setting data.frame. Output of \code{FillSetting}.}

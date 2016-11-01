@@ -5,7 +5,8 @@
 #'
 #' @param onesim is a data frame of stats of one simulation
 #'
-#' @param Gradline a line of GradTable A filled table of simulations
+#' @param GradTable A dataframe (usually output of \code{FillSetting}) or
+#' \code{FillSettingByHZAR}
 #'
 #' @param legend_position is changing a position of the legend in the picture
 #'
@@ -19,6 +20,7 @@
 #'
 #' @author Kamil Jaron \email{kamiljaron at gmail.com}
 #'
+#' @importFrom RColorBrewer brewer.pal
 #' @export
 
 PlotSim <- function(onesim, Gradline,
@@ -42,7 +44,6 @@ PlotSim <- function(onesim, Gradline,
 
 # ploting data
   if(any(is.na(pal))){
-    require(RColorBrewer)
     pal <- brewer.pal(4, 'Set1')
   }
 

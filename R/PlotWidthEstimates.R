@@ -12,10 +12,11 @@
 #'
 #' @author Kamil Jaron \email{kamiljaron at gmail.com}
 #'
+#' @importFrom RColorBrewer brewer.pal
+#'
 #' @export
 
 PlotWidthEstimates <- function(GradLine, onesim, range = NA){
-	library(RColorBrewer)
 	palette <- brewer.pal(5,"RdYlBu")
 	if(is.na(range)){
 		plot(logit(meanHI) ~ order, data = onesim, pch=20)
