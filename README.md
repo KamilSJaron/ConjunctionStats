@@ -1,15 +1,9 @@
----
-output: html_document
----
 # ConjunctionStats: an R package for parsing the output of Conjunction, the simulator of secondary contact.
-##### Kamil S Jaron, Amina Echchiki
+** Developed by: Kamil S Jaron, Amina Echchiki **
 
 ```ConjunctionStats``` is a package for parsing the output of
-Conjunction (https://github.com/KamilSJaron/Conjunction) into R, to
+[Conjunction](https://github.com/KamilSJaron/Conjunction) into R, to
 allow statistical analysis.
-
-#TODO: description of Conjunction and usage of ConjunctionStats
-
 
 # Installation
 
@@ -54,9 +48,11 @@ ReadSetting
 
 ### List of useful functions
 
-**ConjunctionStats nomenclature:**
+Here we only list all the functions, detailed descritions you can find in the manual pages of functions and plenty of examples you can find at repository [ConjunctionExamples](https://github.com/KamilSJaron/ConjunctionExamples)
 
-* All non-internal functions are in camel style
+**ConjunctionStats nomenclature**
+
+* All non-internal functions are in CamelStyle
 * `Read...` functions are reading files.
 * `Fill...` functions are outputing an input object with some newly computed statictics
 * `Get...` finctions are outputing a summary, statistics or reduced input object
