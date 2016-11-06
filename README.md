@@ -1,5 +1,6 @@
 # ConjunctionStats: an R package for parsing the output of Conjunction, the simulator of secondary contact.
-** Developed by: Kamil S Jaron, Amina Echchiki **
+
+**Developed by: Kamil S Jaron, Amina Echchiki**
 
 ```ConjunctionStats``` is a package for parsing the output of
 [Conjunction](https://github.com/KamilSJaron/Conjunction) into R, to

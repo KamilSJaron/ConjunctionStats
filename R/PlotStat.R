@@ -24,6 +24,13 @@
 #'
 #' @param ... addenitional arguments passed to plot function
 #'
+#' @examples
+#'    PlotStat(GradTable, 'width_H', 's', 'b', 'topright')
+#'    # If there are many simulations in GradTable, too many points will overlap
+#'    # adding a noise to selection might help see more of the data points
+#'    GradTable$s_norm <- GradTable$s + rnorm(nrow(GradTable), 0, 0.007)
+#'    PlotStat(GradTable, 'width_H', 's_norm', 'b', 'topright')
+#'
 #' @author Kamil Jaron \email{kamiljaron at gmail.com}
 #'
 #' @importFrom RColorBrewer brewer.pal
