@@ -9,11 +9,13 @@
 #'
 #' @param G is an optional parameter; if specified a dataset will be filtered only to row of specifiied generation.
 #'
+#' @param filter is an optional parameter; if specified a dataset will be filtered only to rows of widths greater than the value of this parameter.
+#'
 #' @author Kamil Jaron \email{kamiljaron at gmail.com}
 #'
 #' @export
 
-GetReplicateAverages <- function(GradTable, filename = NA, G = NA){
+GetReplicateAverages <- function(GradTable, filename = NA, G = NA, filter = NA){
   # GradTable - filled GradTable
   # filename - name of pdf for boxplot, default, no plot
   # G - subset of GradTable using generation
@@ -22,8 +24,12 @@ GetReplicateAverages <- function(GradTable, filename = NA, G = NA){
     GradTable <- GradTable[GradTable$G == G,]
   }
 
+  if(!(is.na(filter))){
+    GradTable_D[GradTable_D$width_H > filter,]
+  }
+
   if(!is.na(filename)){
-    pdf('widths_vs_selection_L1.pdf')
+    pdf(filename)
     x <-seq(0,1,by=0.01)
 
     plot(x,twidth(x,sqrt(0.5)), type = 'l',

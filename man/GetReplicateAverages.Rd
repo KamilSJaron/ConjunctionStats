@@ -4,7 +4,7 @@
 \alias{GetReplicateAverages}
 \title{GetReplicateAverages}
 \usage{
-GetReplicateAverages(GradTable, filename = NA, G = NA)
+GetReplicateAverages(GradTable, filename = NA, G = NA, filter = NA)
 }
 \arguments{
 \item{GradTable}{is a data frame filled by \code{FillSettingByHZAR}}
@@ -12,6 +12,8 @@ GetReplicateAverages(GradTable, filename = NA, G = NA)
 \item{filename}{is an optional name; if specified a Figure of widths is saved.}
 
 \item{G}{is an optional parameter; if specified a dataset will be filtered only to row of specifiied generation.}
+
+\item{filter}{is an optional parameter; if specified a dataset will be filtered only to rows of widths greater than the value of this parameter.}
 }
 \description{
 \code{GetReplicateAverages} compute width_H averages over replicates.
