@@ -1,7 +1,7 @@
-#' @title Fill2DSetting
+#' @title Fill2DSettingByNLM
 #'
 #' @description
-#' \code{Fill2DSetting} integrates the the output of \code{ReadSummary} and \code{ReadSetting} functions into a data.frame object. Warning: choose this function if Conjunction simulation was run in a 2D world; choose alternative function \code{FillSetting} instead if Conjunction simulation was run in a 1D world.
+#' \code{Fill2DSettingByNLM} integrates the the output of \code{ReadSummary} and \code{ReadSetting} functions into a data.frame object. Warning: choose this function if Conjunction simulation was run in a 2D world; choose alternative function \code{FillSetting} instead if Conjunction simulation was run in a 1D world.
 #'
 #' @param sim A string of characters indicating a ReadSummary object. Please refer to documentation of \code{ReadSummary} function for detailed usage.
 #'
@@ -10,16 +10,10 @@
 #' @return A data.frame object, integrating information about the settings used in the simulation run and the summary of the simulation run in a R-friendly format.
 #'
 #' @author Kamil Jaron \email{kamiljaron at gmail.com}
-#
-#' @examples{
-#'    mysim <- ReadSummary(nameIn='../../Conjunction/out')
-#'    myGradTable <- ReadSetting('../../Conjunction/setting.txt')
-#'    myGradTable <- Fill2DSetting(sim=mysim, GradTable=myGradTable)
-#' }
 #'
 #' @export
 
-Fill2DSetting <- function(sim,GradTable){
+Fill2DSettingByNLM <- function(sim,GradTable){
 	lsize <- sim[[1]]$DEME[sim[[1]]$DOWN == 0]
 	for(i in 0:lsize){
 		GradTable[[paste("width_",i,sep='')]] <- 0

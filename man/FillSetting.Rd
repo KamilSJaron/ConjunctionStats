@@ -4,24 +4,32 @@
 \alias{FillSetting}
 \title{FillSetting}
 \usage{
-FillSetting(sim, GradTable)
+FillSetting(sim, GradTable, method = "hzar")
 }
 \arguments{
-\item{sim}{A string of characters indicating a ReadSummary object. Please refer to documentation of \code{ReadSummary} function for detailed usage.}
+\item{sim}{A list of simulation summaries, output of \code{ReadSummary}.
+Please refer to documentation of \code{ReadSummary} function for detailed usage.}
 
-\item{GradTable}{A string of characters indicating a ReadSetting object. Please refer to documentation of \code{ReadSetting} function for detailed usage.}
+\item{GradTable}{A data.frame of simulations, output of \code{ReadSetting}.
+Please refer to documentation of \code{ReadSetting} function for detailed usage.}
+
+\item{method}{set to 'hzar' for fit performed by package hzar (default) or
+'nlm' for fit performed by fit of logistic curve to cline using non-linear least square method.
+'nlm' mehtod is faster, but does not perform well on clines deviating a lot from logistic shape
+(multilocus clines, clines under strong drift ...)}
 }
 \value{
 A data.frame object, integrating information about the settings used in the simulation run and the summary of the simulation run in a R-friendly format.
 }
 \description{
-\code{Fill2DSetting} integrates the the output of \code{ReadSummary} and \code{ReadSetting} functions into a data.frame object. Warning: choose this function if Conjunction simulation was run in a 1D world; choose alternative function \code{Fill2DSetting} instead if Conjunction simulation was run in a 2D world.
+\code{FillSetting} computes widths and centers of set of clines (simulations).
+Both 1D and 2D simulations can be input
 }
 \examples{
 {
    mysim=ReadSummary(nameIn='../../Conjunction/out')
    myGradTable=ReadSetting(InputFile='../../Conjunction/setting.txt')
-   myFillSetting = FillSetting(sim=mysim, GradTable=myGradTable)
+   myFilledSetting = FillSetting(sim=mysim, GradTable=myGradTable)
 }
 
 }

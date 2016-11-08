@@ -1,10 +1,10 @@
-#' @title FillSummary
+#' @title TrimSummary
 #'
 #' @description
-#' \code{FillSummary} integrates the the output of \code{ReadSummary} and
+#' \code{TrimSummary} integrates the the output of \code{ReadSummary} and
 #' \code{ReadSetting} functions into a list of data.frame objects.
 #' Warning: choose this function if Conjunction simulation was run in a 1D world;
-#' choose alternative function \code{Fill2DSummary} instead
+#' choose alternative function \code{Trim2DSummary} instead
 #' if Conjunction simulation was run in a 2D world.
 #'
 #' @param sim A string of characters indicating a ReadSummary object. Please refer to documentation of \code{ReadSummary} function for detailed usage.
@@ -19,14 +19,14 @@
 #'    mySim=ReadSummary(nameIn='../../Conjunction/out')
 #'    myReadSetting=ReadSetting(InputFile='../../Conjunction/setting.txt')
 #'    myCenters=myReadSetting$C
-#'    myFillSummary = FillSummary(sim=mySim, centers=myCenters)
+#'    myTrimSummary = TrimSummary(sim=mySim, centers=myCenters)
 #' }
 #'
 #' @export
 
 #TODO: comment inline, notes
 
-FillSummary <- function(sim,centers){
+TrimSummary <- function(sim,centers){
 	for(i in 1:length(sim)){
 		B1max <- max(sim[[i]]$order)
 		B0min <- 1

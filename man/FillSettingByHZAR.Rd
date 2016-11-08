@@ -17,16 +17,8 @@ Please refer to documentation of \code{ReadSetting} function for detailed usage.
 A data.frame object with setting and estimates of width and centery by hzar
 }
 \description{
-\code{FillSettingByHZAR} integrates the the output of \code{ReadSummary} and
+FillSettingByHZAR integrates the the output of \code{ReadSummary} and
 \code{ReadSetting} functions into a data.frame object using package hzar
-}
-\examples{
-{
-   mysim <- ReadSummary(nameIn='simulation.out')
-   myGradTable <- ReadSetting(InputFile='setting.txt')
-   myGradTable <- FillSettingByHZAR(mysim, myGradTable)
-}
-
 }
 \author{
 Kamil Jaron \email{kamiljaron at gmail.com}
