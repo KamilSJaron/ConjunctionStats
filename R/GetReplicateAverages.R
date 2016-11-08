@@ -25,7 +25,7 @@ GetReplicateAverages <- function(GradTable, filename = NA, G = NA, filter = NA){
   }
 
   if(!(is.na(filter))){
-    GradTable_D[GradTable_D$width_H > filter,]
+    GradTable <- GradTable[GradTable$width_H > filter,]
   }
 
   if(!is.na(filename)){

@@ -1,7 +1,7 @@
-#' @title PlotHistograms
+#' @title PlotBoxplots
 #'
 #' @description
-#' \code{PlotHistograms} is a function for ploting a set of histograms of a stat
+#' \code{PlotBoxplots} is a function for ploting a set of boxplots of a stat
 #' of a set of simulations with respect to two parameters specified by user
 #'
 #' @param GradTable A dataframe (usually output of \code{FillSetting}) or
@@ -24,13 +24,13 @@
 #' @author Kamil Jaron \email{kamiljaron at gmail.com}
 #'
 #' @examples
-#'    PlotHistograms(GradTable, 'width_H', 's', 'D', 'topright')
-#' 
+#'    PlotBoxplots(GradTable, 'width_H', 's', 'D', 'topright')
+#'
 #'
 #' @importFrom RColorBrewer brewer.pal
 #' @export
 
-PlotHistograms <- function(GradTable, stat, par1, par2,
+PlotBoxplots <- function(GradTable, stat, par1, par2,
                            legend_position = NA, pal = NA, xlim = NA, ylim = NA){
   if (any(is.na(xlim))) {
     xlim = c(min(GradTable[, par1]), max(GradTable[, par1]))
