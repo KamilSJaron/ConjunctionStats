@@ -56,6 +56,7 @@ Here we only list all the functions, detailed descritions you can find in the ma
 * All non-internal functions are in CamelStyle
 * `Read...` functions are reading files.
 * `Fill...` functions are outputing an input object with some newly computed statictics
+* `Trim...` functions are outputing an input object trimmed # if(get == trim){I should merge them}
 * `Get...` finctions are outputing a summary, statistics or reduced input object
 * `Plot...` functions are plotting usually using paletes from package `Rcolorbrewer`
 
@@ -67,19 +68,12 @@ The core and the main purpose of the package is to provide an easy way how to **
 to fill
 ```
 
-**1D** 
+**1D or 2D** 
 
 ``` {r}
 setting <- ReadSetting(setting_file) # reads setting file, returns a dataframe of performed simulations
 sims <- ReadSummary(out_file) # reads output file, returns a list of dataframes of demes of simulations
-setting <- FillSetting(sims, setting) # add estimates of widths to setting frame using non-linear fitting of logistic function, depreciated for multilocus clines
-setting <- FillSettingByHZAR(sims, setting) # add estimates of widths to setting frame using package HZAR
-```
-
-**2D**
-
-```{r}
-to fill
+setting <- FillSetting(sims, setting, method='hzar') # add estimates of widths to setting frame using non-linear fitting of logistic function, depreciated for multilocus clines
 ```
 
 The second part of the package is used for plotting common hybrid zone graphics. See man pages of funcitons to see details.
