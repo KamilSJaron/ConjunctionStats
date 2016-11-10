@@ -30,7 +30,7 @@ PlotBoxplots(GradTable, stat, par1, par2, legend_position = NA, pal = NA,
 of a set of simulations with respect to two parameters specified by user
 }
 \examples{
-   PlotBoxplots(GradTable, 'width_H', 's', 'D', 'topright')
+   PlotBoxplots(GradTable, 'width', 's', 'D', 'topright')
 
 
 }
