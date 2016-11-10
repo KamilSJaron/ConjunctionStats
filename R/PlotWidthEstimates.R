@@ -29,7 +29,7 @@ PlotWidthEstimates <- function(GradLine, onesim, range = NA){
 
 # HZAR width (approximated by logistic curve)
 	x <- seq(0.01,max(onesim$order),by=0.01)
-	y <- logit(sigmoid(c(1,4 / (GradLine$width_H),GradLine$center_H),x))
+	y <- logit(sigmoid(c(1,4 / (GradLine$width),GradLine$center_H),x))
 	lines(x,y, col = palette[1])
 
 # logistic plot

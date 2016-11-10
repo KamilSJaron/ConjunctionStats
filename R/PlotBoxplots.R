@@ -24,7 +24,7 @@
 #' @author Kamil Jaron \email{kamiljaron at gmail.com}
 #'
 #' @examples
-#'    PlotBoxplots(GradTable, 'width_H', 's', 'D', 'topright')
+#'    PlotBoxplots(GradTable, 'width', 's', 'D', 'topright')
 #'
 #'
 #' @importFrom RColorBrewer brewer.pal
@@ -51,7 +51,7 @@ PlotBoxplots <- function(GradTable, stat, par1, par2,
   plot(numeric(0), xlim = xlim + c(-step,step), ylim = ylim,
        xlab = par1, ylab = stat)
 
-  if(stat == 'width_H' & par1 == 's'){
+  if(stat == 'width' & par1 == 's'){
     x <- seq(0, 1, by = 0.01)
     lines(x, twidth(x, sqrt(0.5)))
   }

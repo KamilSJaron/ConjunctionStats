@@ -23,7 +23,7 @@ Fill2DSettingByHZAR <- function(sim,GradTable){
 		GradTable[[paste("center_",i,sep='')]] <- 0
 	}
 	GradTable$total_demes <- 0
-	deme_matrix <- matrix(sim[[1]]$DEME, nrow = lsize + 1)
+	deme_matrix <- matrix(sim[[1]]$DEME, nrow = lsize)
 
 	for(i in 1:length(sim)){
 		GradTable$total_demes[i] <- nrow(sim[[i]])

@@ -1,7 +1,7 @@
 #' @title GetReplicateAverages
 #'
 #' @description
-#' \code{GetReplicateAverages} compute width_H averages over replicates.
+#' \code{GetReplicateAverages} compute width averages over replicates.
 #'
 #' @param GradTable is a data frame filled by \code{FillSettingByHZAR}
 #'
@@ -25,7 +25,7 @@ GetReplicateAverages <- function(GradTable, filename = NA, G = NA, filter = NA){
   }
 
   if(!(is.na(filter))){
-    GradTable <- GradTable[GradTable$width_H > filter,]
+    GradTable <- GradTable[GradTable$width > filter,]
   }
 
   if(!is.na(filename)){
@@ -33,24 +33,24 @@ GetReplicateAverages <- function(GradTable, filename = NA, G = NA, filter = NA){
     x <-seq(0,1,by=0.01)
 
     plot(x,twidth(x,sqrt(0.5)), type = 'l',
-         ylim = c(min(GradTable$width_H), max(GradTable$width_H)),
+         ylim = c(min(GradTable$width, na.rm = T), max(GradTable$width, na.rm = T)),
          xlim = c(min(GradTable$s), max(GradTable$s)),
-         xlab = 'selection', ylab = 'width_H')
+         xlab = 'selection', ylab = 'width')
   }
 
   GradTable_means <- data.frame(s = numeric(0),
                                 b = numeric(0),
-                                width_H = numeric(0))
+                                width = numeric(0))
 
   for(sel in unique(GradTable$s)){
     for(beta in unique(GradTable$b)){
-      mw <- mean(GradTable$width_H[GradTable$s == sel & GradTable$b == beta])
+      mw <- mean(GradTable$width[GradTable$s == sel & GradTable$b == beta])
       GradTable_means <- rbind(GradTable_means,
                                data.frame(s = sel,
                                           b = beta,
-                                          width_H = mw))
+                                          width = mw))
       if(!is.na(filename)){
-        boxplot(GradTable$width_H[GradTable$s == sel],
+        boxplot(GradTable$width[GradTable$s == sel],
                 at = sel,
                 boxwex = 0.05,
                 add = T)

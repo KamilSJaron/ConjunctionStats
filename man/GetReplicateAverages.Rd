@@ -16,7 +16,7 @@ GetReplicateAverages(GradTable, filename = NA, G = NA, filter = NA)
 \item{filter}{is an optional parameter; if specified a dataset will be filtered only to rows of widths greater than the value of this parameter.}
 }
 \description{
-\code{GetReplicateAverages} compute width_H averages over replicates.
+\code{GetReplicateAverages} compute width averages over replicates.
 }
 \author{
 Kamil Jaron \email{kamiljaron at gmail.com}
