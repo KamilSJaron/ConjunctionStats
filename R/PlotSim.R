@@ -47,19 +47,19 @@ PlotSim <- function(onesim, Gradline,
     pal <- brewer.pal(4, 'Set1')
   }
 
-	# meanf f(heter)   meanHI  var(HI)   var(p)       LD
+    # meanf f(heter)   meanHI  var(HI)   var(p)       LD
   points(onesim$centered, onesim$meanf,  pch = 20, col = pal[1])
   lines(onesim$centered, onesim$meanf, col = pal[1])
 
-	points(onesim$centered, onesim$meanHI,  pch = 20, col = pal[2])
+    points(onesim$centered, onesim$meanHI,  pch = 20, col = pal[2])
   lines(onesim$centered, onesim$meanHI, col = pal[2])
 
-	points(onesim$centered, onesim$LD,  pch = 20, col = pal[3])
+    points(onesim$centered, onesim$LD,  pch = 20, col = pal[3])
   lines(onesim$centered, onesim$LD, col = pal[3])
 
-	points(onesim$centered, onesim[,'f(heter)'],  pch = 20, col = pal[4])
+    points(onesim$centered, onesim[,'f(heter)'],  pch = 20, col = pal[4])
   lines(onesim$centered, onesim[,'f(heter)'], col = pal[4])
 
   legend(legend_position, col = pal, pch =20, inset = 0.08,
-		legend = c('mean fitness','mean HI', 'LD', 'f(heter)'))
+        legend = c('mean fitness','mean HI', 'LD', 'f(heter)'))
 }

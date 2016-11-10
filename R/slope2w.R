@@ -12,5 +12,5 @@
 #' @export
 
 slope2w <- function(slope){
-	return(4 / slope)
+    return(4 / slope)
 }

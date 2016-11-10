@@ -16,70 +16,70 @@
 #' @export
 
 ReadSetting <- function(InputFile = './setting.txt'){
-	gradientTable <- data.frame(run = 1)
-	# 'C' = numeric(0),'L' = numeric(0),'r' = numeric(0),'s' = numeric(0),'b' = numeric(0)
-	summaryFile <- readLines(InputFile)
-	generations <- as.numeric(strsplit(summaryFile[grepl('NUMBERofGENERATIONS',summaryFile)], "= | #")[[1]][2])
-	replicates <- 1
+    gradientTable <- data.frame(run = 1)
+    # 'C' = numeric(0),'L' = numeric(0),'r' = numeric(0),'s' = numeric(0),'b' = numeric(0)
+    summaryFile <- readLines(InputFile)
+    generations <- as.numeric(strsplit(summaryFile[grepl('NUMBERofGENERATIONS',summaryFile)], "= | #")[[1]][2])
+    replicates <- 1
 
-	for(l in summaryFile){
-		l <- unlist(strsplit(l,split='#'))[1]
-		l <- unlist(strsplit(l,split='='))
-		if(grepl('RECOMBINATIONrate',l[1]) | grepl('LAMBDA',l[1])){
-			if(grepl("\\[",l[2])){
-				gradientTable <- merge(gradientTable,data.frame('r' = getVectorSplit(l)))
-			} else {
-				gradientTable <- merge(data.frame('r' = as.numeric(l[2])),gradientTable)
-			}
-		}
-		if(grepl('SELECTION',l[1])){
-			if(grepl("\\[",l[2])){
-				gradientTable <- merge(gradientTable,data.frame('s' = getVectorSplit(l)))
-			} else {
-				gradientTable <- merge(data.frame('s' = as.numeric(l[2])),gradientTable)
-			}
-		}
-		if(grepl('CHROM',l[1])){
-			if(grepl("\\[",l[2])){
-				gradientTable <- merge(gradientTable,data.frame('C' = getVectorSplit(l)))
-			} else {
-				gradientTable <- merge(data.frame('C' = as.numeric(l[2])),gradientTable)
-			}
-		}
-		if(grepl('LOCI',l[1])){
-			if(grepl("\\[",l[2])){
-				gradientTable <- merge(gradientTable,data.frame('L' = getVectorSplit(l)))
-			} else {
-				gradientTable <- merge(data.frame('L' = as.numeric(l[2])),gradientTable)
-			}
-		}
-		if(grepl('BETA',l[1])){
-			if(grepl("\\[",l[2])){
-				gradientTable <- merge(gradientTable,data.frame('b' = getVectorSplit(l)))
-			} else {
-				gradientTable <- merge(data.frame('b' = as.numeric(l[2])),gradientTable)
-			}
-		}
-		if(grepl('NUMBERofSAVES',l[1])){
-		  saves <- as.numeric(l[2])
-			if(saves > 1){
-				gradientTable <- merge(data.frame('G' = (generations / saves) * 1:saves) ,gradientTable)
-			}
-		}
-		if(grepl('DEMEsize',l[1])){
-			if(grepl("\\[",l[2])){
-				gradientTable <- merge(gradientTable,data.frame('D' = as.double(strsplit(strsplit(strsplit(l[2],split=c('\\['))[[1]][2],split='\\]')[[1]][1],split=',')[[1]])))
-			} else {
-				gradientTable <- merge(data.frame('D' = as.numeric(l[2])),gradientTable)
-			}
-		}
-		if(grepl('REPLICATES',l[1])){
-			replicates <- as.numeric(l[2])
-		}
-	}
-	if(replicates > 1){
-			gradientTable <- merge(gradientTable,data.frame('n' = 1:replicates))
-	}
-	gradientTable$run <- c()
-	return(gradientTable)
+    for(l in summaryFile){
+        l <- unlist(strsplit(l,split='#'))[1]
+        l <- unlist(strsplit(l,split='='))
+        if(grepl('RECOMBINATIONrate',l[1]) | grepl('LAMBDA',l[1])){
+            if(grepl("\\[",l[2])){
+                gradientTable <- merge(gradientTable,data.frame('r' = getVectorSplit(l)))
+            } else {
+                gradientTable <- merge(data.frame('r' = as.numeric(l[2])),gradientTable)
+            }
+        }
+        if(grepl('SELECTION',l[1])){
+            if(grepl("\\[",l[2])){
+                gradientTable <- merge(gradientTable,data.frame('s' = getVectorSplit(l)))
+            } else {
+                gradientTable <- merge(data.frame('s' = as.numeric(l[2])),gradientTable)
+            }
+        }
+        if(grepl('CHROM',l[1])){
+            if(grepl("\\[",l[2])){
+                gradientTable <- merge(gradientTable,data.frame('C' = getVectorSplit(l)))
+            } else {
+                gradientTable <- merge(data.frame('C' = as.numeric(l[2])),gradientTable)
+            }
+        }
+        if(grepl('LOCI',l[1])){
+            if(grepl("\\[",l[2])){
+                gradientTable <- merge(gradientTable,data.frame('L' = getVectorSplit(l)))
+            } else {
+                gradientTable <- merge(data.frame('L' = as.numeric(l[2])),gradientTable)
+            }
+        }
+        if(grepl('BETA',l[1])){
+            if(grepl("\\[",l[2])){
+                gradientTable <- merge(gradientTable,data.frame('b' = getVectorSplit(l)))
+            } else {
+                gradientTable <- merge(data.frame('b' = as.numeric(l[2])),gradientTable)
+            }
+        }
+        if(grepl('NUMBERofSAVES',l[1])){
+          saves <- as.numeric(l[2])
+            if(saves > 1){
+                gradientTable <- merge(data.frame('G' = (generations / saves) * 1:saves) ,gradientTable)
+            }
+        }
+        if(grepl('DEMEsize',l[1])){
+            if(grepl("\\[",l[2])){
+                gradientTable <- merge(gradientTable,data.frame('D' = as.double(strsplit(strsplit(strsplit(l[2],split=c('\\['))[[1]][2],split='\\]')[[1]][1],split=',')[[1]])))
+            } else {
+                gradientTable <- merge(data.frame('D' = as.numeric(l[2])),gradientTable)
+            }
+        }
+        if(grepl('REPLICATES',l[1])){
+            replicates <- as.numeric(l[2])
+        }
+    }
+    if(replicates > 1){
+            gradientTable <- merge(gradientTable,data.frame('n' = 1:replicates))
+    }
+    gradientTable$run <- c()
+    return(gradientTable)
 }

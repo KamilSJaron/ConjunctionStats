@@ -12,5 +12,5 @@
 #' @export
 
 ss2w <- function(ss,sigma = sqrt(0.5)){
-	return((2 * sigma) / sqrt(ss))
+    return((2 * sigma) / sqrt(ss))
 }

@@ -19,8 +19,8 @@
 #' @export
 
 BlocksDistribution <- function(x,S,R,M){
-	theta = S / R
-	y = ((M * theta) / (S * (1 + theta))) *
-		((2 * x^(-1 * ((3+theta)/(1+theta)))) / (1 + theta))
-	return(y)
+    theta = S / R
+    y = ((M * theta) / (S * (1 + theta))) *
+        ((2 * x^(-1 * ((3+theta)/(1+theta)))) / (1 + theta))
+    return(y)
 }

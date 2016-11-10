@@ -23,29 +23,29 @@
 #TODO: comment inline, notes
 
 Trim2DSummary <- function(sim,GradTable){
-	lsize <- sim[[1]]$DEME[sim[[1]]$DOWN == 0]
-	for(i in 1:length(sim)){
-		B1s <- seq(max(sim[[i]]$order),max(sim[[i]]$order),length = (lsize + 1))
-		B0s <- seq(0,0,length = (lsize + 1))
-		for(h in 0:lsize){
-			selected <- seq(h,max(sim[[i]]$DEME),by = lsize+1)
-			subtable <- sim[[i]][sim[[i]]$DEME %in% selected,]
-			if(any(subtable$meanHI == 1)){
-				B1 <- min(subtable$order[subtable$meanHI == 1]):max(subtable$order[subtable$meanHI == 1])
-				B1s[h+1] <- max(c(B1[!(B1 %in% subtable$order[subtable$meanHI == 1])],min(subtable$order[subtable$meanHI == 1]) - 1))
-			}
-			if(any(subtable$meanHI == 0)){
-				B0 <- min(subtable$order[subtable$meanHI == 0]):max(subtable$order[subtable$meanHI == 0])
-				B0s[h+1] <- min(c(B0[!(B0 %in% subtable$order[subtable$meanHI == 0])]),max(subtable$order[subtable$meanHI == 0]) + 1)
-			}
-		}
-		minB0 <- min(B0s)
-		maxB1 <- max(B1s)
+    lsize <- sim[[1]]$DEME[sim[[1]]$DOWN == 0]
+    for(i in 1:length(sim)){
+        B1s <- seq(max(sim[[i]]$order),max(sim[[i]]$order),length = (lsize + 1))
+        B0s <- seq(0,0,length = (lsize + 1))
+        for(h in 0:lsize){
+            selected <- seq(h,max(sim[[i]]$DEME),by = lsize+1)
+            subtable <- sim[[i]][sim[[i]]$DEME %in% selected,]
+            if(any(subtable$meanHI == 1)){
+                B1 <- min(subtable$order[subtable$meanHI == 1]):max(subtable$order[subtable$meanHI == 1])
+                B1s[h+1] <- max(c(B1[!(B1 %in% subtable$order[subtable$meanHI == 1])],min(subtable$order[subtable$meanHI == 1]) - 1))
+            }
+            if(any(subtable$meanHI == 0)){
+                B0 <- min(subtable$order[subtable$meanHI == 0]):max(subtable$order[subtable$meanHI == 0])
+                B0s[h+1] <- min(c(B0[!(B0 %in% subtable$order[subtable$meanHI == 0])]),max(subtable$order[subtable$meanHI == 0]) + 1)
+            }
+        }
+        minB0 <- min(B0s)
+        maxB1 <- max(B1s)
 
-		sim[[i]] <- sim[[i]][sim[[i]]$order %in% (minB0:maxB1),]
-		ordervec <- sim[[i]]$order - minB0 + 1
-		sim[[i]]$order = ordervec
-	}
+        sim[[i]] <- sim[[i]][sim[[i]]$order %in% (minB0:maxB1),]
+        ordervec <- sim[[i]]$order - minB0 + 1
+        sim[[i]]$order = ordervec
+    }
 
-	return(sim)
+    return(sim)
 }

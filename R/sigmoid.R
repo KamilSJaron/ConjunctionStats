@@ -9,5 +9,5 @@
 #' @export
 
 sigmoid <- function(params, x) {
-	params[1] / (1 + exp(-params[2] * (x - params[3])))
+    params[1] / (1 + exp(-params[2] * (x - params[3])))
 }

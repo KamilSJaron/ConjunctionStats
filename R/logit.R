@@ -8,5 +8,5 @@
 #' @export
 
 logit <- function(vector){
-	return(log(vector / (1 - vector)))
+    return(log(vector / (1 - vector)))
 }

@@ -29,25 +29,25 @@
 
 FillSetting <- function(sim, GradTable, method = 'hzar'){
 
-	if(method == 'hzar'){
-		if("UP" %in% colnames(sim[[1]])){
-			# 2D HZAR
-			GradTable <- Fill2DSettingByHZAR(sim, GradTable)
-		} else {
-			# 1D HZAR
-			GradTable <- FillSettingByHZAR(sim, GradTable)
-		}
-	}
+    if(method == 'hzar'){
+        if("UP" %in% colnames(sim[[1]])){
+            # 2D HZAR
+            GradTable <- Fill2DSettingByHZAR(sim, GradTable)
+        } else {
+            # 1D HZAR
+            GradTable <- FillSettingByHZAR(sim, GradTable)
+        }
+    }
 
-	if(method == 'nlm'){
-		if("UP" %in% colnames(sim[[1]])){
-			# 2D NLM
-			GradTable <- Fill2DSettingByNLM(sim, GradTable)
-		} else {
-			# 1D NLM
-			GradTable <- FillSettingByNLM(sim, GradTable)
-		}
-	}
+    if(method == 'nlm'){
+        if("UP" %in% colnames(sim[[1]])){
+            # 2D NLM
+            GradTable <- Fill2DSettingByNLM(sim, GradTable)
+        } else {
+            # 1D NLM
+            GradTable <- FillSettingByNLM(sim, GradTable)
+        }
+    }
 
-	return(GradTable)
+    return(GradTable)
 }

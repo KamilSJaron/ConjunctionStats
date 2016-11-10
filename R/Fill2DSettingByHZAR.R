@@ -16,26 +16,26 @@
 #' @export
 
 Fill2DSettingByHZAR <- function(sim,GradTable){
-	# lsize is the number of demes simulated perpendicular to the cline
-	lsize <- sim[[1]]$DEME[sim[[1]]$DOWN == 0] + 1
-	for(i in 1:lsize){
-		GradTable[[paste("width_",i,sep='')]] <- 0
-		GradTable[[paste("center_",i,sep='')]] <- 0
-	}
-	GradTable$total_demes <- 0
-	deme_matrix <- matrix(sim[[1]]$DEME, nrow = lsize)
+    # lsize is the number of demes simulated perpendicular to the cline
+    lsize <- sim[[1]]$DEME[sim[[1]]$DOWN == 0] + 1
+    for(i in 1:lsize){
+        GradTable[[paste("width_",i,sep='')]] <- 0
+        GradTable[[paste("center_",i,sep='')]] <- 0
+    }
+    GradTable$total_demes <- 0
+    deme_matrix <- matrix(sim[[1]]$DEME, nrow = lsize)
 
-	for(i in 1:length(sim)){
-		GradTable$total_demes[i] <- nrow(sim[[i]])
-		for(h in 1:lsize){
-			subtable <- sim[[i]][sim[[i]]$DEME %in% deme_matrix[h,],]
-			mknAdaA <- SummaryToHZAR(subtable, GradTable[i,])
-			mknAdaAmodelData <- FitHZARmodel(mknAdaA);
-			center <- unlist(mknAdaAmodelData$ML.cline$param.free[1])
-			width <- unlist(mknAdaAmodelData$ML.cline$param.free[2])
-			GradTable[[paste("center_",h,sep='')]][i] <- center
-			GradTable[[paste("width_",h,sep='')]][i] <- width
-		}
-	}
-	return(GradTable)
+    for(i in 1:length(sim)){
+        GradTable$total_demes[i] <- nrow(sim[[i]])
+        for(h in 1:lsize){
+            subtable <- sim[[i]][sim[[i]]$DEME %in% deme_matrix[h,],]
+            mknAdaA <- SummaryToHZAR(subtable, GradTable[i,])
+            mknAdaAmodelData <- FitHZARmodel(mknAdaA);
+            center <- unlist(mknAdaAmodelData$ML.cline$param.free[1])
+            width <- unlist(mknAdaAmodelData$ML.cline$param.free[2])
+            GradTable[[paste("center_",h,sep='')]][i] <- center
+            GradTable[[paste("width_",h,sep='')]][i] <- width
+        }
+    }
+    return(GradTable)
 }

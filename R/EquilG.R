@@ -13,5 +13,5 @@
 # comment: percentage of genome acting together under selection
 
 EquilG <- function(theta){
-	return(1 - (1 / theta))
+    return(1 - (1 / theta))
 }

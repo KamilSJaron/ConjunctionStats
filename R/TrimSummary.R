@@ -27,21 +27,21 @@
 #TODO: comment inline, notes
 
 TrimSummary <- function(sim,centers){
-	for(i in 1:length(sim)){
-		B1max <- max(sim[[i]]$order)
-		B0min <- 1
-		if(any(sim[[i]]$meanHI == 1)){
-			B1 <- min(sim[[i]]$order[sim[[i]]$meanHI == 1]):max(sim[[i]]$order[sim[[i]]$meanHI == 1])
-			B1max <- max(c(B1[!(B1 %in% sim[[i]]$order[sim[[i]]$meanHI == 1])],min(sim[[i]]$order[sim[[i]]$meanHI == 1]) - 1))
-		}
-		if(any(sim[[i]]$meanHI == 0)){
-			B0 <- min(sim[[i]]$order[sim[[i]]$meanHI == 0]):max(sim[[i]]$order[sim[[i]]$meanHI == 0])
-			B0min <- min(c(B0[!(B0 %in% sim[[i]]$order[sim[[i]]$meanHI == 0])]),max(sim[[i]]$order[sim[[i]]$meanHI == 0]) + 1)
-		}
-		sim[[i]] <- sim[[i]][sim[[i]]$order %in% (B0min:B1max),]
-		ordervec <- sim[[i]]$order - B0min + 1
-		sim[[i]]$order = ordervec
-		sim[[i]]$centered <- ordervec - centers[i]
-	}
-	return(sim)
+    for(i in 1:length(sim)){
+        B1max <- max(sim[[i]]$order)
+        B0min <- 1
+        if(any(sim[[i]]$meanHI == 1)){
+            B1 <- min(sim[[i]]$order[sim[[i]]$meanHI == 1]):max(sim[[i]]$order[sim[[i]]$meanHI == 1])
+            B1max <- max(c(B1[!(B1 %in% sim[[i]]$order[sim[[i]]$meanHI == 1])],min(sim[[i]]$order[sim[[i]]$meanHI == 1]) - 1))
+        }
+        if(any(sim[[i]]$meanHI == 0)){
+            B0 <- min(sim[[i]]$order[sim[[i]]$meanHI == 0]):max(sim[[i]]$order[sim[[i]]$meanHI == 0])
+            B0min <- min(c(B0[!(B0 %in% sim[[i]]$order[sim[[i]]$meanHI == 0])]),max(sim[[i]]$order[sim[[i]]$meanHI == 0]) + 1)
+        }
+        sim[[i]] <- sim[[i]][sim[[i]]$order %in% (B0min:B1max),]
+        ordervec <- sim[[i]]$order - B0min + 1
+        sim[[i]]$order = ordervec
+        sim[[i]]$centered <- ordervec - centers[i]
+    }
+    return(sim)
 }
