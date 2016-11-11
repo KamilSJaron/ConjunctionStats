@@ -38,7 +38,7 @@ Fill2DMean <- function(GradTable, stat = 'both', filter = 1, method = hmean, alt
   if(!all(is.na(altGradTable))){
     selected_cols <- substr(colnames(altGradTable), 1, stat_length) == stat_cmp
     z_alt <- as.matrix(altGradTable[, selected_cols])
-    z <- ifelse(z < filter, z, z_alt)
+    z <- ifelse(z < filter, z1, z)
   }
 
   z[z < filter] <- NA

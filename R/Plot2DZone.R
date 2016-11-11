@@ -29,7 +29,10 @@
 
 Plot2DZone <- function(GradTable, stat = 'width', par1 = 's', par2 = 'b', pal = NA, center = T){
 
-  selected_cols <- which(substr(colnames(GradTable), 1, 5) == substr(stat, 1, 5))
+  stat_cmp <- paste0(stat, '_')
+  stat_len <- nchar(stat_cmp)
+
+  selected_cols <- substr(colnames(GradTable), 1, stat_len) == stat_cmp
 
   if(any(is.na(pal))){
     pal <- brewer.pal(length(unique(GradTable[,par1])),"RdYlGn")
@@ -38,7 +41,7 @@ Plot2DZone <- function(GradTable, stat = 'width', par1 = 's', par2 = 'b', pal = 
   z <- as.matrix(GradTable[, selected_cols])
 
   if(center){
-    xlim = c(min(z - rowMeans(z)),max(z - rowMeans(z)))
+    xlim = c(min(z - rowMeans(z), na.rm = T),max(z - rowMeans(z), na.rm = T))
     xlab = paste('deviation of', stat)
   } else {
     xlim = c(0, max(z[!is.na(z)]))
@@ -47,11 +50,11 @@ Plot2DZone <- function(GradTable, stat = 'width', par1 = 's', par2 = 'b', pal = 
 
   plot(numeric(0),
        xlim = xlim,
-       ylim = c(0,length(selected_cols)-1),
+       ylim = c(0,sum(selected_cols)-1),
        ylab = 'horizontal position', xlab = xlab,
        yaxt = "n",cex.lab=0.8, cex.axis=0.8)
 
-  ycoor <- seq(length(selected_cols),-1, by = -1)
+  ycoor <- seq(sum(selected_cols),-1, by = -1)
 
   for(val2 in unique(GradTable[,par2])){
     lty = which(unique(GradTable[,par2]) == val2)
@@ -62,7 +65,7 @@ Plot2DZone <- function(GradTable, stat = 'width', par1 = 's', par2 = 'b', pal = 
                                GradTable[,par1] == val1, selected_cols])
       for(i in 1:nrow(z)){
         if(center){
-          xcoor <- z[i,] - mean(z[i,])
+          xcoor <- z[i,] - mean(z[i,], na.rm = T)
         } else {
           xcoor <- z[i,]
         }
