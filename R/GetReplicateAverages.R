@@ -44,7 +44,7 @@ GetReplicateAverages <- function(GradTable, filename = NA, G = NA, filter = NA){
 
   for(sel in unique(GradTable$s)){
     for(beta in unique(GradTable$b)){
-      mw <- mean(GradTable$width[GradTable$s == sel & GradTable$b == beta])
+      mw <- mean(GradTable$width[GradTable$s == sel & GradTable$b == beta], na.rm = T)
       GradTable_means <- rbind(GradTable_means,
                                data.frame(s = sel,
                                           b = beta,
