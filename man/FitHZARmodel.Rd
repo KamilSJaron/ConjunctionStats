@@ -4,10 +4,12 @@
 \alias{FitHZARmodel}
 \title{FitHZARmodel}
 \usage{
-FitHZARmodel(mknAdaA)
+FitHZARmodel(AdaA, tails = "mirror")
 }
 \arguments{
-\item{mknAdaA}{an hzar object}
+\item{AdaA}{an hzar object}
+
+\item{tails}{'none' for single locus clines}
 }
 \value{
 A fitted hzar model
@@ -17,8 +19,8 @@ A fitted hzar model
 }
 \examples{
 {
-   mknAdaA <- SummaryToHZAR(sim[[1]], GradTable[1,])
-   mknAdaAmodelData <- FitHZARmodel(mknAdaA);
+   AdaA <- SummaryToHZAR(sim[[1]], GradTable[1,])
+   AdaAmodelData <- FitHZARmodel(AdaA);
 }
 
 }

@@ -29,10 +29,14 @@ Fill2DSettingByHZAR <- function(sim,GradTable){
         GradTable$total_demes[i] <- nrow(sim[[i]])
         for(h in 1:lsize){
             subtable <- sim[[i]][sim[[i]]$DEME %in% deme_matrix[h,],]
-            mknAdaA <- SummaryToHZAR(subtable, GradTable[i,])
-            mknAdaAmodelData <- FitHZARmodel(mknAdaA);
-            center <- unlist(mknAdaAmodelData$ML.cline$param.free[1])
-            width <- unlist(mknAdaAmodelData$ML.cline$param.free[2])
+            AdaA <- SummaryToHZAR(subtable, GradTable[i,])
+            if(GradTable$C[i] * GradTable$L[i] == 1){
+              AdaAmodelData <- FitHZARmodel(AdaA, 'mirror');
+            } else {
+              AdaAmodelData <- FitHZARmodel(AdaA, 'none');
+            }
+            center <- unlist(AdaAmodelData$ML.cline$param.free[1])
+            width <- unlist(AdaAmodelData$ML.cline$param.free[2])
             GradTable[[paste("center_",h,sep='')]][i] <- center
             GradTable[[paste("width_",h,sep='')]][i] <- width
         }

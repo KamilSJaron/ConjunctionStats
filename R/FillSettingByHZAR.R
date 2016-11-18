@@ -21,12 +21,18 @@ FillSettingByHZAR <- function(sim, GradTable){
   GradTable$center <- NA
 
   for(i in 1:length(sim)){
-    mknAdaA <- SummaryToHZAR(sim[[i]], GradTable[i,])
-    mknAdaAmodelData <- FitHZARmodel(mknAdaA);
+    AdaA <- SummaryToHZAR(sim[[i]], GradTable[i,])
+
+    if(GradTable$C[i] * GradTable$L[i] == 1){
+      AdaAmodelData <- FitHZARmodel(AdaA, 'mirror');
+    } else {
+      AdaAmodelData <- FitHZARmodel(AdaA, 'none');
+    }
+
     # center
-    GradTable$center[i] <- unlist(mknAdaAmodelData$ML.cline$param.free[1])
+    GradTable$center[i] <- unlist(AdaAmodelData$ML.cline$param.free[1])
     # width
-    GradTable$width[i] <- unlist(mknAdaAmodelData$ML.cline$param.free[2])
+    GradTable$width[i] <- unlist(AdaAmodelData$ML.cline$param.free[2])
   }
   return(GradTable)
 }

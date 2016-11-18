@@ -1,7 +1,7 @@
 #' @title plotBLockDistr
 #'
 #' @description
-#' \code{plotBLockDistr} 
+#' \code{plotBLockDistr}
 #'
 #' @param blocks
 #'
@@ -9,6 +9,7 @@
 #'
 #' @author Kamil Jaron \email{kamiljaron at gmail.com}
 #'
+#' @importFrom RColorBrewer brewer.pal
 #' @export
 
 # TODO: header
@@ -24,8 +25,8 @@ plotBLockDistr <- function(blocks, gradline){
     y <- c(y,log(number_of_blocks / (((7/8)^k)-((7/8)^(k+1)))))
   }
   lines(x,y, col = colour)
-  points(x,y, pch = 20, col = colour)  
-  
+  points(x,y, pch = 20, col = colour)
+
   eqy <- log(BlocksDistribution(exp(x), gradline$s, gradline$lambda , gradline$M * (1 - gradline$s)))
   lines(x,eqy, col = colour)
 }

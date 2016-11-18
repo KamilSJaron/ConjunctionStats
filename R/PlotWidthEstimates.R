@@ -13,7 +13,6 @@
 #' @author Kamil Jaron \email{kamiljaron at gmail.com}
 #'
 #' @importFrom RColorBrewer brewer.pal
-#'
 #' @export
 
 PlotWidthEstimates <- function(GradLine, onesim, range = NA){

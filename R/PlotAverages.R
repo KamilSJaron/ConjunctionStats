@@ -18,6 +18,7 @@
 #'
 #' @author Kamil Jaron \email{kamiljaron at gmail.com}
 #'
+#' @importFrom RColorBrewer brewer.pal
 #' @export
 
 PlotAverages <- function(GradTable, stat, par1, par2, pal = NA, ...){
