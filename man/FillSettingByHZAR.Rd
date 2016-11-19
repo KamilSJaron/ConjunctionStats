@@ -4,7 +4,7 @@
 \alias{FillSettingByHZAR}
 \title{FillSettingByHZAR}
 \usage{
-FillSettingByHZAR(sim, GradTable)
+FillSettingByHZAR(sim, GradTable, tails = "none")
 }
 \arguments{
 \item{sim}{A string of characters indicating a ReadSummary object.

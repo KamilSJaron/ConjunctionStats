@@ -16,23 +16,39 @@
 #' @import hzar
 #' @export
 
-FillSettingByHZAR <- function(sim, GradTable){
+FillSettingByHZAR <- function(sim, GradTable, tails = 'none'){
   GradTable$width <- NA
   GradTable$center <- NA
+  GradTable$LogL <- NA
+  if(tails == 'mirror'){
+    GradTable$deltaM <- NA
+    GradTable$tauM <- NA
+  }
 
   for(i in 1:length(sim)){
     AdaA <- SummaryToHZAR(sim[[i]], GradTable[i,])
 
-    if(GradTable$C[i] * GradTable$L[i] == 1){
-      AdaAmodelData <- FitHZARmodel(AdaA, 'mirror');
+    if(tails == 'auto'){
+      if(GradTable$C[i] * GradTable$L[i] == 1){
+        AdaAmodelData <- FitHZARmodel(AdaA, 'none');
+      } else {
+        AdaAmodelData <- FitHZARmodel(AdaA, 'mirror');
+      }
     } else {
-      AdaAmodelData <- FitHZARmodel(AdaA, 'none');
+      AdaAmodelData <- FitHZARmodel(AdaA, tails);
     }
 
     # center
     GradTable$center[i] <- unlist(AdaAmodelData$ML.cline$param.free[1])
     # width
     GradTable$width[i] <- unlist(AdaAmodelData$ML.cline$param.free[2])
+    if(tails == 'mirror'){
+      GradTable$deltaM[i] <- unlist(AdaAmodelData$ML.cline$param.free[3])
+      GradTable$tauM[i] <- unlist(AdaAmodelData$ML.cline$param.free[4])
+    }
+
+    # log likelihood
+    GradTable$LogL[i] <- AdaAmodelData$ML.cline$logLike
   }
   return(GradTable)
 }

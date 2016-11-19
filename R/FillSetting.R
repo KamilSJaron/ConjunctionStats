@@ -15,6 +15,9 @@
 #' 'nlm' mehtod is faster, but does not perform well on clines deviating a lot from logistic shape
 #' (multilocus clines, clines under strong drift ...)
 #'
+#' @param tails ('mirror') to fit logistic model with exponenctial functions as tails;
+#' ('none') to fit logistic model only
+#'
 #' @return A data.frame object, integrating information about the settings used in the simulation run and the summary of the simulation run in a R-friendly format.
 #'
 #' @author Kamil Jaron \email{kamiljaron at gmail.com}
@@ -27,7 +30,7 @@
 #'
 #' @export
 
-FillSetting <- function(sim, GradTable, method = 'hzar'){
+FillSetting <- function(sim, GradTable, method = 'hzar', tails = 'none'){
 
     if(method == 'hzar'){
         if("UP" %in% colnames(sim[[1]])){
@@ -35,7 +38,7 @@ FillSetting <- function(sim, GradTable, method = 'hzar'){
             GradTable <- Fill2DSettingByHZAR(sim, GradTable)
         } else {
             # 1D HZAR
-            GradTable <- FillSettingByHZAR(sim, GradTable)
+            GradTable <- FillSettingByHZAR(sim, GradTable, tails)
         }
     }
 

@@ -4,7 +4,7 @@
 \alias{FitHZARmodel}
 \title{FitHZARmodel}
 \usage{
-FitHZARmodel(AdaA, tails = "mirror")
+FitHZARmodel(AdaA, tails = "none")
 }
 \arguments{
 \item{AdaA}{an hzar object}
