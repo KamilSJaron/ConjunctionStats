@@ -5,7 +5,13 @@
 #'
 #' @param AdaA an hzar object
 #'
-#' @param tails 'none' for single locus clines
+#' @param tails 'none' for logistic clines, 'mirror' for logistic with exponenctial tails
+#'
+#' @param BoxReq c(min, max) adds requirements to any and all of the parameters center, width, deltaM, deltaL, and deltaR.
+#'
+#' @param chainLength sets the length of mc for exploring a parameter space
+#'
+#' @param burnin is number of points that at explored in tyhe parametric space before the chain is initiated
 #'
 #' @return A fitted hzar model
 #'
@@ -19,19 +25,23 @@
 #' @import hzar
 #' @export
 
-FitHZARmodel <- function(AdaA, tails = "none"){
+FitHZARmodel <- function(AdaA, tails = "none", BoxReq = NA, chainLength = 5e3, burnin = 1e3){
   # note there is no 2D model in HZAR
 
   AdaAmodel <- hzar.makeCline1DFreq(AdaA, scaling="fixed",tails=tails);
 
   #‘hzar.model.addBoxReq’ adds requirements to any and all of the
   #   parameters center, width, deltaM, deltaL, and deltaR.
-  AdaAmodel <- hzar.model.addBoxReq(AdaAmodel, 1 , nrow(AdaA$frame) / 2);
+  if(any(is.na(BoxReq)) | length(BoxReq) != 2){
+    BoxReq <- c(1, nrow(AdaA$frame))
+  }
+
+  AdaAmodel <- hzar.model.addBoxReq(AdaAmodel, BoxReq[1] , BoxReq[2]);
   AdaAmodelFitR <- hzar.first.fitRequest.old.ML(model=AdaAmodel,
                                                    AdaA,
                                                    verbose=FALSE);
-  AdaAmodelFitR$mcmcParam$chainLength <- 5e3;
-  AdaAmodelFitR$mcmcParam$burnin <- 1e3;
+  AdaAmodelFitR$mcmcParam$chainLength <- chainLength;
+  AdaAmodelFitR$mcmcParam$burnin <- burnin;
   AdaAmodelFit <- hzar.doFit(AdaAmodelFitR)
   AdaAmodelData <- hzar.dataGroup.add(AdaAmodelFit);
   return(AdaAmodelData)

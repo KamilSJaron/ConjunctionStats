@@ -4,12 +4,19 @@
 \alias{FitHZARmodel}
 \title{FitHZARmodel}
 \usage{
-FitHZARmodel(AdaA, tails = "none")
+FitHZARmodel(AdaA, tails = "none", BoxReq = NA, chainLength = 5000,
+  burnin = 1000)
 }
 \arguments{
 \item{AdaA}{an hzar object}
 
-\item{tails}{'none' for single locus clines}
+\item{tails}{'none' for logistic clines, 'mirror' for logistic with exponenctial tails}
+
+\item{BoxReq}{c(min, max) adds requirements to any and all of the parameters center, width, deltaM, deltaL, and deltaR.}
+
+\item{chainLength}{sets the length of mc for exploring a parameter space}
+
+\item{burnin}{is number of points that at explored in tyhe parametric space before the chain is initiated}
 }
 \value{
 A fitted hzar model
