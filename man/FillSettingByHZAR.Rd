@@ -12,9 +12,13 @@ Please refer to documentation of \code{ReadSummary} function for detailed usage.
 
 \item{GradTable}{A string of characters indicating a ReadSetting object.
 Please refer to documentation of \code{ReadSetting} function for detailed usage.}
+
+\item{tails}{'none' fit logistic model,
+'mirror' will fit a logistic function with exponenctial tails,
+'auto' will choose a model with greater likelihood}
 }
 \value{
-A data.frame object with setting and estimates of width and centery by hzar
+An input data.frame with, log likelihood of fitted model, estimates of width, center (tails = 'none'), deltaM and tauM (tail = 'auto' | 'mirror').
 }
 \description{
 FillSettingByHZAR integrates the the output of \code{ReadSummary} and

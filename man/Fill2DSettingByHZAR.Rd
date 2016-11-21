@@ -4,12 +4,14 @@
 \alias{Fill2DSettingByHZAR}
 \title{Fill2DSettingByHZAR}
 \usage{
-Fill2DSettingByHZAR(sim, GradTable)
+Fill2DSettingByHZAR(sim, GradTable, tails = "none")
 }
 \arguments{
 \item{sim}{A string of characters indicating a ReadSummary object. Please refer to documentation of \code{ReadSummary} function for detailed usage.}
 
 \item{GradTable}{A string of characters indicating a ReadSetting object. Please refer to documentation of \code{ReadSetting} function for detailed usage.}
+
+\item{tails}{'none' for model without tails, 'mirror' for tailed model; only widths and log likelihoods are reported in both cases}
 }
 \value{
 A data.frame object, integrating information about the settings used in the simulation run and the summary of the simulation run in a R-friendly format.

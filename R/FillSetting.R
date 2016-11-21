@@ -35,7 +35,7 @@ FillSetting <- function(sim, GradTable, method = 'hzar', tails = 'none'){
     if(method == 'hzar'){
         if("UP" %in% colnames(sim[[1]])){
             # 2D HZAR
-            GradTable <- Fill2DSettingByHZAR(sim, GradTable)
+            GradTable <- Fill2DSettingByHZAR(sim, GradTable, tails)
         } else {
             # 1D HZAR
             GradTable <- FillSettingByHZAR(sim, GradTable, tails)

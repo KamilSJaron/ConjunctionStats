@@ -31,9 +31,9 @@ FitHZARmodel <- function(AdaA, tails = "none", BoxReq = NA, chainLength = 5e3, b
   AdaAmodel <- hzar.makeCline1DFreq(AdaA, scaling="fixed",tails=tails);
 
   #‘hzar.model.addBoxReq’ adds requirements to any and all of the
-  #   parameters center, width, deltaM, deltaL, and deltaR.
+  #   parameters center, width, deltaM.
   if(any(is.na(BoxReq)) | length(BoxReq) != 2){
-    BoxReq <- c(1, nrow(AdaA$frame))
+    BoxReq <- c(0, nrow(AdaA$frame))
   }
 
   AdaAmodel <- hzar.model.addBoxReq(AdaAmodel, BoxReq[1] , BoxReq[2]);

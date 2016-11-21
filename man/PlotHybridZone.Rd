@@ -12,7 +12,8 @@ PlotHybridZone(sim, center = "start", logit = T, add = F, xlim = NA,
 
 \item{center}{set to 'start' to center by a start of the simulation (deme 0),
 set to NA not to center at all, set to corresponding data.frame with
-simulations (usually output of \code{FillSetting})}
+simulations (usually output of \code{FillSetting}) to center by computed
+center in}
 
 \item{logit}{= T if average hybrid should be plot in logit transfomation}
 
@@ -20,7 +21,7 @@ simulations (usually output of \code{FillSetting})}
 
 \item{xlim}{is equvalent of parameter xlim from plot}
 
-\item{ylim}{is equvalent of ylim from plot}
+\item{ylim}{NA means c(-10,10) for logit and c(0,1) for non-logit clines}
 
 \item{...}{is passed to function \code{lines} (for instance col for change of colour)}
 }

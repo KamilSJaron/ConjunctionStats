@@ -7,7 +7,8 @@
 #'
 #' @param center set to 'start' to center by a start of the simulation (deme 0),
 #'        set to NA not to center at all, set to corresponding data.frame with
-#'        simulations (usually output of \code{FillSetting})
+#'        simulations (usually output of \code{FillSetting}) to center by computed
+#'        center in
 #'
 #' @param logit = T if average hybrid should be plot in logit transfomation
 #'
@@ -15,7 +16,7 @@
 #'
 #' @param xlim is equvalent of parameter xlim from plot
 #'
-#' @param ylim is equvalent of ylim from plot
+#' @param ylim NA means c(-10,10) for logit and c(0,1) for non-logit clines
 #'
 #' @param ... is passed to function \code{lines} (for instance col for change of colour)
 #'
