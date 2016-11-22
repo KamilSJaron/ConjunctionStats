@@ -35,8 +35,8 @@ Fill2DSettingByHZAR <- function(sim, GradTable, tails = 'none'){
             AdaA <- SummaryToHZAR(subtable, GradTable[i,])
             AdaAmodelData <- FitHZARmodel(AdaA, tails);
 
-            GradTable[[paste("center_",h,sep='')]][i] <- AdaAmodelData$ML.cline$param.free[1]
-            GradTable[[paste("width_",h,sep='')]][i] <- AdaAmodelData$ML.cline$param.free[2]
+            GradTable[[paste("center_",h,sep='')]][i] <- unlist(AdaAmodelData$ML.cline$param.free[1])
+            GradTable[[paste("width_",h,sep='')]][i] <- unlist(AdaAmodelData$ML.cline$param.free[2])
             GradTable[[paste("LogL_",h,sep='')]][i] <- AdaAmodelData$ML.cline$logLike
         }
     }

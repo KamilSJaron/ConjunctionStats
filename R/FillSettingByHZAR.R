@@ -48,12 +48,12 @@ FillSettingByHZAR <- function(sim, GradTable, tails = 'none'){
     }
 
     # center
-    GradTable$center[i] <- AdaAmodelData$ML.cline$param.free[1]
+    GradTable$center[i] <- unlist(AdaAmodelData$ML.cline$param.free[1])
     # width
-    GradTable$width[i] <- AdaAmodelData$ML.cline$param.free[2]
+    GradTable$width[i] <- unlist(AdaAmodelData$ML.cline$param.free[2])
     if(tails == 'mirror' | tails == 'auto'){
-      GradTable$deltaM[i] <- AdaAmodelData$ML.cline$param.free[3]
-      GradTable$tauM[i] <- AdaAmodelData$ML.cline$param.free[4]
+      GradTable$deltaM[i] <- unlist(AdaAmodelData$ML.cline$param.free[3])
+      GradTable$tauM[i] <- unlist(AdaAmodelData$ML.cline$param.free[4])
     }
     # log likelihood
     GradTable$LogL[i] <- AdaAmodelData$ML.cline$logLike
