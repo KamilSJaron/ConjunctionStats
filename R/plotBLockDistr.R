@@ -12,9 +12,9 @@
 #' @importFrom RColorBrewer brewer.pal
 #' @export
 
-# TODO: header
+# TODO: VALIDATE
 
-plotBLockDistr <- function(blocks, gradline){
+PlotBLockDistr <- function(blocks, gradline){
   colour = colorRampPalette(brewer.pal(9,"Spectral"))(10000)[gradline$G]
   x <- c()
   y <- c()

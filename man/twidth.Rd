@@ -7,12 +7,13 @@
 twidth(s, sigma = sqrt(0.5))
 }
 \arguments{
-\item{s}{}
+\item{s}{selection}
 
-\item{sigma}{}
+\item{sigma}{dispersal}
 }
 \description{
-\code{twidth}
+\code{twidth} given selection and dispersal function returns
+diffusion approximation of width of one locus cline
 }
 \author{
 Kamil Jaron \email{kamiljaron at gmail.com}

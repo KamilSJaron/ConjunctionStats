@@ -14,7 +14,7 @@
 #'
 #' @export
 
-getAUFC <- function(selection, beta){
+GetAUFC <- function(selection, beta){
   return( 1 -
           (4^beta * selection * gamma(beta + 1)^2) /
           (gamma(2 * beta + 2))

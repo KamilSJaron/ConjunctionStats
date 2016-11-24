@@ -13,7 +13,8 @@ getBlockSummaries(path = ".", pattern = ".dat")
 patterm
 }
 \description{
-\code{getBlockSummaries}
+\code{getBlockSummaries} loads a type of output file 'blocks' from 1D or 2D
+simulations
 }
 \examples{
 {
