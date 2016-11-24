@@ -18,7 +18,7 @@
 ReadSummary <- function(nameIn){
     summaryFile <- readLines(nameIn)
 
-    is_zero = F
+    is_zero = "0D" %in% strsplit(summaryFile[1],' ')[[1]]
 
     if(is_zero){
       return(Read0DSummary(summaryFile))

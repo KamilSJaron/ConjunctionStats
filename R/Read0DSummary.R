@@ -13,11 +13,11 @@
 
 Read0DSummary <- function(summaryFile){
     sim <- list()
-    header <- strsplit(LogFile[2], split = " ")[[1]][strsplit(LogFile[2], split = " ")[[1]] != ""]
+    header <- strsplit(summaryFile[2], split = " ")[[1]][strsplit(summaryFile[2], split = " ")[[1]] != ""]
     i <- 1
 
-    for(line_of_sim in seq(3,length(LogFile), by = 3)){
-        l <- LogFile[line_of_sim]
+    for(line_of_sim in seq(3,length(summaryFile), by = 3)){
+        l <- summaryFile[line_of_sim]
         newl <- strsplit(l, split = " ")[[1]][strsplit(l, split = " ")[[1]] != ""]
         new_sim <- data.frame(matrix(as.numeric(newl), ncol = length(header)))
         colnames(new_sim) <- header
