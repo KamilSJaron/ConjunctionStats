@@ -26,8 +26,6 @@
 #' @export
 
 FitHZARmodel <- function(AdaA, tails = "none", BoxReq = NA, chainLength = 5e3, burnin = 1e3){
-  # note there is no 2D model in HZAR
-
   AdaAmodel <- hzar.makeCline1DFreq(AdaA, scaling="fixed",tails=tails);
 
   #‘hzar.model.addBoxReq’ adds requirements to any and all of the
@@ -40,9 +38,20 @@ FitHZARmodel <- function(AdaA, tails = "none", BoxReq = NA, chainLength = 5e3, b
   AdaAmodelFitR <- hzar.first.fitRequest.old.ML(model=AdaAmodel,
                                                    AdaA,
                                                    verbose=FALSE);
-  AdaAmodelFitR$mcmcParam$chainLength <- chainLength;
-  AdaAmodelFitR$mcmcParam$burnin <- burnin;
-  AdaAmodelFit <- hzar.doFit(AdaAmodelFitR)
-  AdaAmodelData <- hzar.dataGroup.add(AdaAmodelFit);
-  return(AdaAmodelData)
+  out <- tryCatch(
+      {
+        AdaAmodelFitR$mcmcParam$chainLength <- chainLength;
+        AdaAmodelFitR$mcmcParam$burnin <- burnin;
+        AdaAmodelFit <- hzar.doFit(AdaAmodelFitR)
+        AdaAmodelData <- hzar.dataGroup.add(AdaAmodelFit);
+        return(AdaAmodelData)
+      },
+      error=function(cond) {
+          AdaAmodelData <- hzar.dataGroup.add(AdaAmodelFitR);
+          AdaAmodelData$ML.cline$param.free <- c(NA, NA)
+          AdaAmodelData$ML.cline$logLike <- NA
+          return(AdaAmodelData)
+      }
+  )
+  return(out)
 }
