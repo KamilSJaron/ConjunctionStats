@@ -33,7 +33,9 @@
 FillSetting <- function(sim, GradTable, method = 'hzar', tails = 'none'){
 
     if(method == 'hzar'){
-        if("UP" %in% colnames(sim[[1]])){
+        # (1st condition) 2D models contail indexes of demes UP and DOWN of every deme
+        # (2nd condition) I want 2D model with only one deme forming torus (i.e. just 1D with smaller dirpersal to be treated as 1D)
+        if("UP" %in% colnames(sim[[1]]) & any(sim[[1]]$UP != sim[[1]]$DOWN)){
             # 2D HZAR
             GradTable <- Fill2DSettingByHZAR(sim, GradTable, tails)
         } else {
