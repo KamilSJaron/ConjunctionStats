@@ -8,6 +8,8 @@ allow statistical analysis.
 
 # Installation
 
+ConjunctionStats requires two packages to be installed "hzar" and "RColorBrewer".
+
 ### Install via classical install
 
 In terminal:
@@ -17,6 +19,9 @@ In terminal:
 
 In R:
 ``` {r}
+# install.packages('hzar')
+# install.packages('RColorBrewer')
+
 install.packages("./ConjunctionStats", repos = NULL, type="source")
 ```
 ### Install via GitHub
@@ -25,6 +30,7 @@ In R:
 
 ``` {r}
 # install.packages("devtools")
+
 library(devtools)
 install_github("KamilSJaron/ConjunctionStats", build_vignettes=FALSE)
 ```
