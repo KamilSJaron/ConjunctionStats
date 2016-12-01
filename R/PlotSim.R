@@ -61,5 +61,5 @@ PlotSim <- function(onesim, Gradline,
   lines(onesim$centered, onesim[,'f(heter)'], col = pal[4])
 
   legend(legend_position, col = pal, pch =20, inset = 0.08,
-        legend = c('mean fitness','mean HI', 'LD', 'f(heter)'))
+        legend = c('mean fitness','mean HI', 'LD', 'f(heter)'), bty = "n")
 }

@@ -67,5 +67,6 @@ PlotBoxplots <- function(GradTable, stat, par1, par2,
               col = pal[p2_order], pch = 20, cex = 1 / bins)
     }
   }
-  legend(legend_position, col = pal, legend = unique(GradTable[, par2]), pch = 20, title = par2)
+  legend(legend_position, col = pal, legend = unique(GradTable[, par2]),
+         pch = 20, title = par2, bty = "n")
 }

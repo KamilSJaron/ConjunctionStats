@@ -76,6 +76,6 @@ PlotStat <- function(GradTable, stat = 'width', par1 = 's', par2 = NA,
         col = pal[which(par_state == unique(GradTable[,par2]))])
     }
     legend(legend_position, col = pal, legend = unique(GradTable[,par2]),
-      title = par2, pch = 20)
+      title = par2, pch = 20, bty = "n")
   }
 }
