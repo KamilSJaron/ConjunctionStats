@@ -14,8 +14,8 @@
 
 # TODO: VALIDATE
 
-PlotBLockDistr <- function(blocks, gradline){
-  colour = colorRampPalette(brewer.pal(9,"Spectral"))(10000)[gradline$G]
+PlotBLockDistr <- function(blocks, gradline, prediction = F, ceil){
+  colour = colorRampPalette(brewer.pal(9,"Spectral"))(ceil)[gradline$G]
   x <- c()
   y <- c()
   number_of_blocks <- 0
@@ -27,6 +27,8 @@ PlotBLockDistr <- function(blocks, gradline){
   lines(x,y, col = colour)
   points(x,y, pch = 20, col = colour)
 
-  eqy <- log(BlocksDistribution(exp(x), gradline$s, gradline$lambda , gradline$M * (1 - gradline$s)))
-  lines(x,eqy, col = colour)
+  if(prediction){
+    eqy <- log(BlocksDistribution(exp(x), gradline$s, gradline$r , gradline$D * (1 - gradline$s)))
+    lines(x,eqy, col = colour)
+  }
 }

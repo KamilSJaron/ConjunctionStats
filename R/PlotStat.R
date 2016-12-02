@@ -22,6 +22,8 @@
 #'
 #' @param ylim is equvalent of ylim from plot
 #'
+#' @param pch is equvalent of pch from plot
+#'
 #' @param ... addenitional arguments passed to plot function
 #'
 #' @examples
@@ -38,7 +40,7 @@
 
 PlotStat <- function(GradTable, stat = 'width', par1 = 's', par2 = NA,
                        legend_position = 'topright', add = F, pal = NA,
-                       xlim = NA, ylim = NA, ...){
+                       xlim = NA, ylim = NA, pch = 20, ...){
   # testing
   if(!(par1 %in% colnames(GradTable))){
     message('parameter par1 has to be name of one of the columns of the input table')
@@ -72,7 +74,7 @@ PlotStat <- function(GradTable, stat = 'width', par1 = 's', par2 = NA,
     for(par_state in unique(GradTable[,par2])){
       SubTable <- subset(GradTable, GradTable[,par2] == par_state)
       points(SubTable[,par1],  SubTable[,stat],
-        pch = 20,
+        pch = pch,
         col = pal[which(par_state == unique(GradTable[,par2]))])
     }
     legend(legend_position, col = pal, legend = unique(GradTable[,par2]),

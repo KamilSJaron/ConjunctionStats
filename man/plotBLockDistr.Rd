@@ -4,7 +4,7 @@
 \alias{PlotBLockDistr}
 \title{plotBLockDistr}
 \usage{
-PlotBLockDistr(blocks, gradline)
+PlotBLockDistr(blocks, gradline, prediction = F, ceil)
 }
 \arguments{
 \item{blocks}{}

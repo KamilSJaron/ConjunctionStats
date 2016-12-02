@@ -6,7 +6,7 @@
 \usage{
 PlotStat(GradTable, stat = "width", par1 = "s", par2 = NA,
   legend_position = "topright", add = F, pal = NA, xlim = NA,
-  ylim = NA, ...)
+  ylim = NA, pch = 20, ...)
 }
 \arguments{
 \item{GradTable}{A dataframe (usually output of \code{FillSetting}) or
@@ -27,6 +27,8 @@ PlotStat(GradTable, stat = "width", par1 = "s", par2 = NA,
 \item{xlim}{is equvalent of parameter xlim from plot}
 
 \item{ylim}{is equvalent of ylim from plot}
+
+\item{pch}{is equvalent of pch from plot}
 
 \item{...}{addenitional arguments passed to plot function}
 }

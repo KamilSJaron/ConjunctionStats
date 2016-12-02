@@ -4,7 +4,9 @@
 \alias{PlotAverages}
 \title{PlotAverages}
 \usage{
-PlotAverages(GradTable, stat, par1, par2, pal = NA, ...)
+PlotAverages(GradTable, stat, par1, par2, pal = NA, plot_sd = F,
+  epsilon = 0.01, add = T, xlim = NA, ylim = NA, xlab = "",
+  ylab = "", ...)
 }
 \arguments{
 \item{GradTable}{A dataframe (usually output of \code{FillSetting}) or
@@ -18,7 +20,13 @@ PlotAverages(GradTable, stat, par1, par2, pal = NA, ...)
 
 \item{pal}{is a vector of colous used for colouring categories of the second parameter. By default the pallete will be generated as 'Set1' color brewer pallete with apropriate number of categories}
 
+\item{plot_sd}{F; plot with averages also standard deviation}
+
+\item{epsilon}{0.01 is width of the end of standard deviation bar}
+
 \item{...}{is passed to lines (not to ploints)}
+
+\item{epsilon}{0.01 is width of the end of standard deviation bar}
 }
 \description{
 \code{PlotAverages} add averages to a plot, usually combined with PlotStat.
