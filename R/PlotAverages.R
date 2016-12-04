@@ -18,7 +18,9 @@
 #'
 #' @param epsilon 0.01 is width of the end of standard deviation bar
 #'
-#' @param epsilon 0.01 is width of the end of standard deviation bar
+#' @param add T add points to existing plot, F create a new plot
+#'
+#' @param xlab, ylab, xlim, ylim concernig creation of the new plot
 #'
 #' @param ... is passed to lines (not to ploints)
 #'
@@ -35,10 +37,10 @@ PlotAverages <- function(GradTable, stat, par1, par2, pal = NA, plot_sd = F,
   }
   if(!add){
     if(any(is.na(xlim))){
-      ylim <- c(min(GradTable[,stat]), max(GradTable[,stat]))
+      xlim <- c(min(GradTable[,par1]), max(GradTable[,par1]))
     }
     if(any(is.na(ylim))){
-      ylim <- c(min(GradTable[,par1]), max(GradTable[,par1]))
+      ylim <- c(min(GradTable[,stat]), max(GradTable[,stat]))
     }
     plot(numeric(0), xlim = xlim, ylim = ylim, xlab = xlab, ylab = ylab)
   }

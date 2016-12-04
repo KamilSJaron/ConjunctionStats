@@ -24,9 +24,11 @@ PlotAverages(GradTable, stat, par1, par2, pal = NA, plot_sd = F,
 
 \item{epsilon}{0.01 is width of the end of standard deviation bar}
 
-\item{...}{is passed to lines (not to ploints)}
+\item{add}{T add points to existing plot, F create a new plot}
 
-\item{epsilon}{0.01 is width of the end of standard deviation bar}
+\item{xlab, }{ylab, xlim, ylim concernig creation of the new plot}
+
+\item{...}{is passed to lines (not to ploints)}
 }
 \description{
 \code{PlotAverages} add averages to a plot, usually combined with PlotStat.
