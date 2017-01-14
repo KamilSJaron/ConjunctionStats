@@ -30,9 +30,10 @@ PlotParametricSpace <- function(GradTable, global_margins = 0.1, # in inches
 
   # BETA (min, max, by)
   PlotParametricTemplate(c(-4, 4), NA, cex)
-  beta_axis <- c(1/16, 1/4, 1, 4, 16)
+  beta_axis <- 2^(seq(-4,4,1))
   axis(1, labels=beta_axis, at=log2(beta_axis), lwd=0, lwd.ticks=1, cex.axis=cex)
-  rect(log2(min(GradTable$b)), 0, log2(max(GradTable$s)), 1,
+  if(min(GradTable$b) == max(GradTable$b)){ext_width = 0.03} else {ext_width = 0}
+  rect(log2(min(GradTable$b)) - ext_width, 0, log2(max(GradTable$b)) + ext_width, 1,
        density = denisity_haching)
   mtext(expression(beta), side=2, line=0.5, cex = cex)
 
