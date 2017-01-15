@@ -45,7 +45,8 @@ PlotParametricSpace <- function(GradTable, global_margins = 0.1, # in inches
   mtext(expression(lambda), side=2, line=0.5, cex = cex)
 
   # CHROMOSOMES (min, max, by)
-  PlotParametricTemplate(c(0, 20), 5, cex)
+  PlotParametricTemplate(c(1, 20), NA, cex)
+  axis(1, at = c(1,5,10,20), lwd=0, lwd.ticks=1, cex.axis=cex)
   # -0.1, +0.1 is defined for situation of one simulated value only
   if(min(GradTable$C) == max(GradTable$C)){ext_width = 0.1} else {ext_width = 0}
   rect(min(GradTable$C) - ext_width, 0, max(GradTable$C) + ext_width, 1,
