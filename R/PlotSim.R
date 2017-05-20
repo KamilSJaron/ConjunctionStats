@@ -25,7 +25,12 @@
 
 PlotSim <- function(onesim, Gradline,
                     legend_position = 'bottomright', add = F, pal = NA,
-                    xlim = NA, ylim = NA){
+                    xlim = NA, ylim = NA, center = F){
+
+  onesim$centered <- c(1:nrow(onesim))
+  if(center){
+    onesim$centered <- onesim$centered - Gradline$center
+  }
 
   # if limit are not specified
   if(any(is.na(xlim))){
@@ -43,23 +48,17 @@ PlotSim <- function(onesim, Gradline,
   }
 
 # ploting data
-  if(any(is.na(pal))){
+  if (any(is.na(pal))) {
     pal <- brewer.pal(4, 'Set1')
   }
 
-    # meanf f(heter)   meanHI  var(HI)   var(p)       LD
-  points(onesim$centered, onesim$meanf,  pch = 20, col = pal[1])
-  lines(onesim$centered, onesim$meanf, col = pal[1])
+  # meanf f(heter)   meanHI  var(HI)   var(p)       LD
+  vars <- c('meanf', 'meanHI', 'LD', 'f(heter)')
+  for (i in 1:length(vars)) {
+    points(onesim$centered, onesim[,vars[i]],  pch = 20, col = pal[i])
+    lines(onesim$centered, onesim[,vars[i]], col = pal[i])
+  }
 
-    points(onesim$centered, onesim$meanHI,  pch = 20, col = pal[2])
-  lines(onesim$centered, onesim$meanHI, col = pal[2])
-
-    points(onesim$centered, onesim$LD,  pch = 20, col = pal[3])
-  lines(onesim$centered, onesim$LD, col = pal[3])
-
-    points(onesim$centered, onesim[,'f(heter)'],  pch = 20, col = pal[4])
-  lines(onesim$centered, onesim[,'f(heter)'], col = pal[4])
-
-  legend(legend_position, col = pal, pch =20, inset = 0.08,
-        legend = c('mean fitness','mean HI', 'LD', 'f(heter)'), bty = "n")
+  legend(legend_position, col = pal, pch = 20, inset = 0.08,
+         legend = vars, bty = "n")
 }

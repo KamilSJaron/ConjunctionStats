@@ -43,7 +43,7 @@ Fill2DMean <- function(GradTable, stat = 'both', filter = 1, method = hmean, alt
 
   z[z < filter] <- NA
   GradTable[, stat] <- apply(z, 1, method, na.rm = T)
-  GradTable[, paste0('var_',stat)] <- apply(z, 1, var, na.rm = T)
+  GradTable[, paste0('var_', stat)] <- apply(z, 1, var, na.rm = T)
 
   return(GradTable)
 }

@@ -23,7 +23,7 @@ ReadSetting <- function(InputFile = './setting.txt'){
     replicates <- 1
 
     for(l in summaryFile){
-        l <- unlist(strsplit(l,split='#'))[1] # cut off comments
+        l <- unlist(strsplit(l,split='#'))[1] # cut off comments
         l <- unlist(strsplit(l,split='=')) # split parameter name and value
         # RECOMBINATIONrate was previous name for LAMBDA; it has been changed to avoid confusion with recombintion rate between pair of loci
         if(grepl('RECOMBINATIONrate',l[1]) | grepl('LAMBDA',l[1])){
