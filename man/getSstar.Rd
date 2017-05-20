@@ -19,4 +19,3 @@ getSstar(meanf, c, depth)
 \author{
 Kamil Jaron \email{kamiljaron at gmail.com}
 }
-

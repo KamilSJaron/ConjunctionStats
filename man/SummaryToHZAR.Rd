@@ -18,4 +18,3 @@ Package hzar has to be installed.}
 \author{
 Kamil Jaron \email{kamiljaron at gmail.com}
 }
-

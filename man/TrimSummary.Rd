@@ -33,4 +33,3 @@ if Conjunction simulation was run in a 2D world.
 \author{
 Kamil Jaron \email{kamiljaron at gmail.com}
 }
-

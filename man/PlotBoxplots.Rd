@@ -37,4 +37,3 @@ of a set of simulations with respect to two parameters specified by user
 \author{
 Kamil Jaron \email{kamiljaron at gmail.com}
 }
-

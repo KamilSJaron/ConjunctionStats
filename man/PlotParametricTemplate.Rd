@@ -13,4 +13,3 @@ plotting function \code{PlotParametricSpace}
 \author{
 Kamil Jaron \email{kamiljaron at gmail.com}
 }
-

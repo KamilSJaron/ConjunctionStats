@@ -17,4 +17,3 @@ PlotBLockDistr(blocks, gradline, prediction = F, ceil)
 \author{
 Kamil Jaron \email{kamiljaron at gmail.com}
 }
-

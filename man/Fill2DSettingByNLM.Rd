@@ -20,4 +20,3 @@ A data.frame object, integrating information about the settings used in the simu
 \author{
 Kamil Jaron \email{kamiljaron at gmail.com}
 }
-

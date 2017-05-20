@@ -24,4 +24,3 @@ choose alternative function \code{FillSetting} instead if Conjunction simulation
 \author{
 Kamil Jaron \email{kamiljaron at gmail.com}
 }
-

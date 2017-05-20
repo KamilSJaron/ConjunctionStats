@@ -22,4 +22,3 @@ choose alternative function \code{Fill2DSetting} instead if Conjunction simulati
 \author{
 Kamil Jaron \email{kamiljaron at gmail.com}
 }
-

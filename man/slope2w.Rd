@@ -17,4 +17,3 @@ computes width as an inverse of slope after conversion to hypertangent units
 \author{
 Kamil Jaron \email{kamiljaron at gmail.com}
 }
-

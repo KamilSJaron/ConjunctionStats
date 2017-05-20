@@ -12,4 +12,3 @@ getVectorSplit(l)
 \author{
 Kamil Jaron \email{kamiljaron at gmail.com}
 }
-

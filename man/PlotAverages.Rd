@@ -36,4 +36,3 @@ PlotAverages(GradTable, stat, par1, par2, pal = NA, plot_sd = F,
 \author{
 Kamil Jaron \email{kamiljaron at gmail.com}
 }
-

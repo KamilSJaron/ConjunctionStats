@@ -24,4 +24,3 @@ A data.frame object, featuring information about the settings used in the simula
 \author{
 Kamil Jaron \email{kamiljaron at gmail.com}
 }
-

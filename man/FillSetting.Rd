@@ -39,4 +39,3 @@ Both 1D and 2D simulations can be input
 \author{
 Kamil Jaron \email{kamiljaron at gmail.com}
 }
-

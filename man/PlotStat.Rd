@@ -46,4 +46,3 @@ PlotStat(GradTable, stat = "width", par1 = "s", par2 = NA,
 \author{
 Kamil Jaron \email{kamiljaron at gmail.com}
 }
-

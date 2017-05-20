@@ -24,4 +24,3 @@ A list of data.frame objects, in which each list item, a data.frame, is a simula
 \author{
 Kamil Jaron \email{kamiljaron at gmail.com}
 }
-

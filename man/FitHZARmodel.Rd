@@ -34,4 +34,3 @@ A fitted hzar model
 \author{
 Kamil Jaron \email{kamiljaron at gmail.com}
 }
-

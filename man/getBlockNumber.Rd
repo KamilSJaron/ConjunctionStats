@@ -19,4 +19,3 @@ getBlockNumber(namePattern, save = 1, lim = 9)
 \author{
 Kamil Jaron \email{kamiljaron at gmail.com}
 }
-

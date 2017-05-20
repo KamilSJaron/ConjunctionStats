@@ -28,4 +28,3 @@ The input GradTable with computed mean and variance of widths, centers or both
 \author{
 Kamil Jaron \email{kamiljaron at gmail.com}
 }
-

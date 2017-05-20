@@ -23,4 +23,3 @@ number of chromosomes in one set of simulations
 \author{
 Kamil Jaron \email{kamiljaron at gmail.com}
 }
-

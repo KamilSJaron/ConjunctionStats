@@ -20,4 +20,3 @@ beta is setrength of epistasic effect
 \author{
 Kamil Jaron \email{kamiljaron at gmail.com}
 }
-

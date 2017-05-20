@@ -21,4 +21,3 @@ LogBlocksDistribution(x, S, R, M)
 \author{
 Kamil Jaron \email{kamiljaron at gmail.com}
 }
-

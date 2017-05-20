@@ -15,4 +15,3 @@ EquilG(theta)
 \author{
 Kamil Jaron \email{kamiljaron at gmail.com}
 }
-

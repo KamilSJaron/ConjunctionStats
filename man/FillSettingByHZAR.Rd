@@ -27,4 +27,3 @@ FillSettingByHZAR integrates the the output of \code{ReadSummary} and
 \author{
 Kamil Jaron \email{kamiljaron at gmail.com}
 }
-

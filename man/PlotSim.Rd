@@ -5,7 +5,7 @@
 \title{PlotSim}
 \usage{
 PlotSim(onesim, Gradline, legend_position = "bottomright", add = F,
-  pal = NA, xlim = NA, ylim = NA)
+  pal = NA, xlim = NA, ylim = NA, center = F)
 }
 \arguments{
 \item{onesim}{is a data frame of stats of one simulation}
@@ -29,4 +29,3 @@ PlotSim(onesim, Gradline, legend_position = "bottomright", add = F,
 \author{
 Kamil Jaron \email{kamiljaron at gmail.com}
 }
-

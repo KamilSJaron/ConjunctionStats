@@ -13,4 +13,4 @@ Description: The package is parsing output from simulator genome admixture
 Depends: RColorBrewer, hzar
 License: GPL-3
 LazyLoad: yes
-RoxygenNote: 5.0.1
+RoxygenNote: 6.0.1

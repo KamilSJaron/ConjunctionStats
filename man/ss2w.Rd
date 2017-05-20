@@ -17,4 +17,3 @@ ss2w(ss, sigma = sqrt(0.5))
 \author{
 Kamil Jaron \email{kamiljaron at gmail.com}
 }
-

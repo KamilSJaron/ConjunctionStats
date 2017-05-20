@@ -18,4 +18,3 @@ diffusion approximation of width of one locus cline
 \author{
 Kamil Jaron \email{kamiljaron at gmail.com}
 }
-

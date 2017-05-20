@@ -24,4 +24,3 @@ number of migrants per generation.
 \author{
 Kamil Jaron \email{kamiljaron at gmail.com}
 }
-

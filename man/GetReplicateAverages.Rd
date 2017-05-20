@@ -21,4 +21,3 @@ GetReplicateAverages(GradTable, filename = NA, G = NA, filter = NA)
 \author{
 Kamil Jaron \email{kamiljaron at gmail.com}
 }
-

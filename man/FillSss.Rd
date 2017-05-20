@@ -28,4 +28,3 @@ ss is a selection acting on onelocus cline that is needed to maintaing cline of 
 \author{
 Kamil Jaron \email{kamiljaron at gmail.com}
 }
-

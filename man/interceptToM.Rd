@@ -20,4 +20,3 @@ of blocks to number of migrants needed for distribution in 0D
 \author{
 Kamil Jaron \email{kamiljaron at gmail.com}
 }
-
