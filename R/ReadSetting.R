@@ -20,6 +20,11 @@ ReadSetting <- function(InputFile = './setting.txt'){
     # 'C' = numeric(0),'L' = numeric(0),'r' = numeric(0),'s' = numeric(0),'b' = numeric(0)
     summaryFile <- readLines(InputFile)
     generations <- as.numeric(strsplit(summaryFile[grepl('NUMBERofGENERATIONS',summaryFile)], "= | #")[[1]][2])
+    if(length(summaryFile[grepl('DELAY',summaryFile)]) == 1){
+        delay = as.numeric(strsplit(summaryFile[grepl('DELAY',summaryFile)], "= | #")[[1]][2])
+    } else {
+        delay = 0
+    }
     replicates <- 1
 
     for(l in summaryFile){
@@ -64,16 +69,23 @@ ReadSetting <- function(InputFile = './setting.txt'){
         if(grepl('NUMBERofSAVES',l[1])){
           saves <- as.numeric(l[2])
             if(saves > 1){
-              gradientTable <- merge(data.frame('G' = floor((generations / saves) * 1:saves)), gradientTable)
+              gradientTable <- merge(data.frame('G' = delay + floor(((generations - delay) / saves) * 1:saves)), gradientTable)
             } else {
-              gradientTable <- merge(data.frame('G' = generations) ,gradientTable)
+              gradientTable <- merge(data.frame('G' = generations), gradientTable)
             }
         }
         if(grepl('DEMEsize',l[1])){
             if(grepl("\\[",l[2])){
-                gradientTable <- merge(gradientTable,data.frame('D' = as.double(strsplit(strsplit(strsplit(l[2],split=c('\\['))[[1]][2],split='\\]')[[1]][1],split=',')[[1]])))
+                gradientTable <- merge(gradientTable,data.frame('D' = getVectorSplit(l)))
             } else {
                 gradientTable <- merge(data.frame('D' = as.numeric(l[2])),gradientTable)
+            }
+        }
+        if(grepl('SELECTEDloci',l[1])){
+            if(grepl("\\[",l[2])){
+                gradientTable <- merge(gradientTable,data.frame('SL' = getVectorSplit(l)))
+            } else {
+                gradientTable <- merge(data.frame('SL' = as.numeric(l[2])),gradientTable)
             }
         }
         if(grepl('REPLICATES',l[1])){
