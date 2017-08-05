@@ -17,8 +17,9 @@
 
 
 PlotBlocks <- function(blocks, onesim, gradline, horizontal = F){
-    # blocks -> matrix
-    m <- matrix(0, nrow = length(blocks) * length(blocks[[1]]), ncol = sum(blocks[[1]][[1]][[1]]))
+    # blocks -> matrix of loci, its dim :
+    # number of demes ((nrow(onesim))*deme size) x number of loci
+    m <- matrix(0, nrow = nrow(onesim) * gradline$D, ncol = gradline$L)
     line_index = 1
     for(deme_index in c(onesim$DEME + 1)){
         deme <- blocks[[deme_index]]
@@ -55,27 +56,30 @@ PlotBlocks <- function(blocks, onesim, gradline, horizontal = F){
     axis(loci, at = sel_loci, labels = paste('SL', 1:gradline$SL))
     axis(individials, at=seq(0,1, length = nrow(onesim)), labels=onesim$DEME)
 
+    loci_lines <- 40 / gradline$L
+    deme_lines <- 20 / nrow(onesim)
+
     if( horizontal ){
         title("Introgression plot",
               xlab='Chromosome (selected loci are highlited)',
               ylab='individuals sorted by demes [deme index]')
         for(i in sel_loci_borders){
-            lines(c(i, i), c(0,1))
+            lines(c(i, i), c(0,1), lwd = loci_lines)
         }
 
         for(i in deme_borders){
-            lines(c(0 - loci_w, 1 + loci_w), lwd = 0.5, c(i, i))
+            lines(c(0 - loci_w, 1 + loci_w), c(i, i), lwd = deme_lines)
         }
     } else {
         title("Introgression plot",
               xlab='individuals sorted by demes [deme index]',
               ylab='Chromosome (selected loci are highlited)')
         for(i in sel_loci_borders){
-            lines(c(0,1), c(i, i))
+            lines(c(0,1), c(i, i), lwd = loci_lines)
         }
 
         for(i in deme_borders){
-            lines(c(i, i), c(0 - loci_w, 1 + loci_w), lwd = 0.5)
+            lines(c(i, i), c(0 - loci_w, 1 + loci_w), lwd = deme_lines)
         }
     }
 
